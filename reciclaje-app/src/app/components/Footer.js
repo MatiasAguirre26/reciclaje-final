@@ -1,8 +1,9 @@
+import styles from '../styles/Footer.module.css';
+
 export default function Footer() {
     return (
-      <footer style={{ padding: '20px', textAlign: 'center', marginTop: '50px' }}>
+      <footer className={styles.footer}>
         <p>© 2024 Mi Sitio Web. Todos los derechos reservados.</p>
       </footer>
     );
 }
-  
