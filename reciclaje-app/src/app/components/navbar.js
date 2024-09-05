@@ -1,15 +1,15 @@
 'use client'
-import styles from '../styles/Navbar.module.css';
+import styles from '../styles/navbar.module.css';
 
 // Importamos los iconos SVG
-import HomeIcon from '../../../public/icons/home.svg';
+import HomeIcon from '/public/icons/home.svg';
 
 export default function Navbar() {
     return (
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <li className={styles.navItem}>
-            <a href="/home"><HomeIcon className={styles.navIcon} />
+            <a href="/dashboard"><HomeIcon className={styles.navIcon} />
               Inicio
             </a>
           </li>

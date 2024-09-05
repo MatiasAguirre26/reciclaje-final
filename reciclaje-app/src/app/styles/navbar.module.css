@@ -1,6 +1,4 @@
 
-
-/* app/styles/Navbar.module.css */
 .nav {
     background-color: #000000;
     padding: 10px 20px;
@@ -40,4 +38,5 @@
     width: 24px; /* Ajusta el tamaño del icono según sea necesario */
     height: 24px;
     margin-bottom: 5px;
+    color: white;
   }
