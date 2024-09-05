@@ -1,13 +1,16 @@
 
 .nav {
-    background-color: #000000;
-    padding: 10px 20px;
+    background-color: var(--color-secundary);
+    padding: 1.3rem 0;
     display: flex;
     justify-content: center; /* Centramos el nav */
     align-items: center;
-    border-radius: 10px; /* Añadimos border-radius */
+    border-radius: 60px; /* Añadimos border-radius */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar el nav */
-  }
+
+    max-width: 90%;
+    margin: 20px auto;
+}
   
   .navList {
     list-style: none;
@@ -23,20 +26,20 @@
   
   .navLink {
     text-decoration: none;
-    color: #333;
+    color: var(--color-white);
     display: flex;
-    flex-direction: column; /* Coloca el icono encima del texto */
-    align-items: center; /* Centra el contenido */
-    transition: color 0.3s ease; /* Transición para efecto hover */
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s ease;
   }
   
   .navLink:hover {
-    color: #0070f3; /* Color de hover */
+    color: var(--color-primary); /* Color de hover */
   }
   
   .navIcon {
     width: 24px; /* Ajusta el tamaño del icono según sea necesario */
     height: 24px;
     margin-bottom: 5px;
-    color: white;
+    color: inherit;
   }
