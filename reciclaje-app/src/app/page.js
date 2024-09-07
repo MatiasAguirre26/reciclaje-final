@@ -8,10 +8,10 @@ export default function Home() {
         <article className={styles.article}>
         	<h1 className={styles.h1}>Reciclaje</h1>
             <p>Hace que reciclar sea fácil y gratificante. Regístrate, recicla y gana puntos que luego puedes canjear por increíbles recompensas. “Es así de simple”</p>
-            <a href="./pages/login.html"><button>Únete ahora</button></a>
+            <a href="./auth/login"><button>Únete ahora</button></a>
         </article>
         <div>
-            <img src="./assets/header.webp" alt="hero"></img>         
+          <Image src="/assets/header.webp" alt="hero" width={700} height={500} className="hidden md:block"/>      
         </div>
       </section>
     </main>

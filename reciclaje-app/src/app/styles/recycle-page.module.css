@@ -1,0 +1,49 @@
+.recycleContainer {
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .materialsList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .materialButton {
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .materialButton:hover {
+    background-color: #333;
+  }
+  
+  .materialButton.selected {
+    background-color: #4caf50; /* Cambia el color cuando está seleccionado */
+  }
+  
+  .materialIcon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .materialName {
+    font-size: 16px;
+  }
+  

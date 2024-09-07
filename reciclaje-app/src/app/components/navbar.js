@@ -15,7 +15,7 @@ export default function Navbar() {
             <a href="/dashboard" className={styles.navLink}><HomeIcon className={styles.navIcon} /></a>
           </li>
           <li className={styles.navItem}>
-            <a href="/exchange" className={styles.navLink}><CoinsIcon className={styles.navIcon} /></a>
+            <a href="/rewards" className={styles.navLink}><CoinsIcon className={styles.navIcon} /></a>
           </li>
           <li className={styles.navItem}>
             <a href="/map" className={styles.navLink}><MapIcon className={styles.navIcon} /></a>
