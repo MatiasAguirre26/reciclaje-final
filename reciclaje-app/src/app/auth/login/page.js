@@ -10,7 +10,7 @@ export default function Login() {
           <h2>Iniciar sesión</h2>
           <label>
             Correo electrónico
-            <input type="email" placeholder="Correo electrónico" required />
+            <input type="email" placeholder="ejemplo@mail.com" className={styles.input} required />
           </label>
           <label>
             Contraseña
