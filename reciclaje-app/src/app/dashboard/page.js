@@ -10,9 +10,9 @@ export default function Dashboard() {
         <p>Puntos disponibles: <span className="points">1000</span></p>
       </header>
       <nav className={styles.nav}>
-        <Link href="/reciclar" legacyBehavior><a>Reciclar</a></Link>
-        <Link href="/mapa" legacyBehavior><a>Mapa</a></Link>
-        <Link href="/canjear" legacyBehavior><a>Canjear</a></Link>
+        <Link href="/recycle" legacyBehavior><a>Reciclar</a></Link>
+        <Link href="/map" legacyBehavior><a>Mapa</a></Link>
+        <Link href="/rewards" legacyBehavior><a>Canjear</a></Link>
       </nav>
       <section className={styles.manual}>
         <h2>Manual de reciclaje</h2>
