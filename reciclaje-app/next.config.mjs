@@ -9,6 +9,7 @@ const nextConfig = {
         ...config.resolve.alias,
         'react-leaflet': false, // Ignorar react-leaflet en el lado del servidor
       };
+      config.cache = false; // Desactiva la caché de Webpack temporalmente
       return config
   },
 };
