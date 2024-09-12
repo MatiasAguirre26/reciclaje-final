@@ -1,3 +1,11 @@
-export default function Confirm() {
-    return <h1>¡Hola, Soy Confirmacion de datos!</h1>
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button"
+
+export default function confirm() {
+    return (
+        <div>
+            <h1>Confirmacion de datos</h1>
+            <Link href="/" className={buttonVariants({})}>Confirmar</Link>
+        </div>
+    )
 }

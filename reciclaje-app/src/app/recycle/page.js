@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import styles from '../styles/recycle-page.module.css';
 import Navbar from '../components/navbar';
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button"
+import create from "zustand"
+
 
 const materialsList = [
     { name: 'Metales', icon: '🛠️' },
@@ -24,8 +28,9 @@ export default function Recycle() {
     };
 
     return (
-        <div className={styles.recycleContainer}>
+      <div className={styles.recycleContainer}>
         <h2>Reciclar</h2>
+        <p>Selecciona los materiales que vas a reciclar</p>
         <div className={styles.materialsList}>
           {materialsList.map((material, index) => (
             <button
@@ -40,6 +45,7 @@ export default function Recycle() {
             </button>
           ))}
         </div>
+        <Link href="recycle/locations" className={buttonVariants({ })}>Siguiente</Link>
         <Navbar />
       </div>
     )
