@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <header className={navbar.header}>
       <div className={navbar.logo}>
-          <img src="./assets/logo.webp" alt="Logo de la marca"/>
+        <Image src="/assets/logo.webp" alt="hero" width={200} height={100}/> 
       </div>
       <nav>
       <ul className={navbar.navLinks}>
