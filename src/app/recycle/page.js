@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react';
-import styles from '../styles/recycle-page.module.css';
-import Navbar from '../components/navbar';
+import styles from '@/styles/recycle-page.module.css';
+import Navbar from '@/components/navbar';
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button"
 import create from "zustand"

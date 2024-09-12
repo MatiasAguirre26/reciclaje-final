@@ -1,5 +1,5 @@
-import Navbar from '../components/navbar';
-import styles from '../styles/rewards-page.module.css';
+import Navbar from '@/components/navbar';
+import styles from '@/styles/rewards-page.module.css';
 
 export default function rewards() {
     const categories = ['Todos', 'Alimentos', 'Bebidas', 'Higiene'];

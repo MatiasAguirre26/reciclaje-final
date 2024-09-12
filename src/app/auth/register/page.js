@@ -145,7 +145,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from '../../styles/register.module.css';
+import styles from '@/styles/register.module.css';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({

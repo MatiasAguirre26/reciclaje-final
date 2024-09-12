@@ -5,7 +5,7 @@ export default function confirm() {
     return (
         <div>
             <h1>Confirmacion de datos</h1>
-            <Link href="/" className={buttonVariants({})}>Confirmar</Link>
+            <Link href="/dashboard" className={buttonVariants({})}>Confirmar</Link>
         </div>
     )
 }

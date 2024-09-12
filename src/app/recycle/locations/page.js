@@ -1,4 +1,4 @@
-import styles from '@/app/styles/recycle-page.module.css';
+import styles from '@/styles/recycle-page.module.css';
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button"
 import {

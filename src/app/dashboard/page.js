@@ -1,6 +1,6 @@
-import Navbar from '../components/navbar';
+import Navbar from '@/components/navbar';
 import Link from 'next/link';
-import styles from '../styles/dashboard.module.css';
+import styles from '@/styles/dashboard.module.css';
 
 export default function Dashboard() {
     return (

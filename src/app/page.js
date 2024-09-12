@@ -1,6 +1,6 @@
 import Image from "next/image";
-import styles from './styles/hero-section.module.css';
-import navbar from './styles/navbar-landing.module.css';
+import styles from '@/styles/hero-section.module.css';
+import navbar from '@/styles/navbar-landing.module.css';
 
 export default function Home() {
   return (

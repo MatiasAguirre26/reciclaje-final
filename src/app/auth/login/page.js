@@ -50,7 +50,7 @@
 'use client'
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
-import styles from '../../styles/login.module.css';
+import styles from '@/styles/login.module.css';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
