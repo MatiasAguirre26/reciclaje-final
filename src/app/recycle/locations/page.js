@@ -15,8 +15,14 @@ export default function locations() {
     return (
         <div className={styles.recycleContainer}>
             <h1>Lugares de reciclado</h1>
+            <img src='/assets/header.webp' alt='imagen-del-lugar'></img>
+            <p>Nombre del lugar</p>
+            <p>Direccion</p>
+            <p>Horario</p>
+            <hr/>
+            <p>Elige el lugar donde vas a llevar el reciclaje</p>
             <Select>
-            <SelectTrigger className="w-[280px]">
+            <SelectTrigger className="w-[280px] text-black">
                 <SelectValue placeholder="Select a timezone" />
             </SelectTrigger>
             <SelectContent>
