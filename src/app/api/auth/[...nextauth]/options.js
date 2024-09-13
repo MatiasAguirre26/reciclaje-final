@@ -30,3 +30,5 @@ export const authOptions = {
     },
     secret: process.env.NEXTAUTH_SECRET,
 }
+
+console.log(process.env.NEXT_PUBLIC_API_URL);
