@@ -4,7 +4,7 @@ import styles from '@/styles/dashboard.module.css';
 
 export default function Dashboard() {
     return (
-    <div className={styles.container}>
+    <div className={`${styles.container} text-white`}>
       <header className={styles.header}>
         <h1>Hola, Matias</h1>
         <p>Puntos disponibles: <span className="points">1000</span></p>

@@ -1,6 +1,6 @@
 
-import Navbar from '../../components/navbar';
-import styles from '../styles/map-page.module.css';
+import Navbar from '@/components/navbar';
+import styles from '@/styles/map-page.module.css';
 
 
 import dynamic from 'next/dynamic';
