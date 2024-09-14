@@ -29,10 +29,7 @@ export default function Home() {
               <a href="/auth/register.html">Registrarse</a>
           </div>
       </div>
-      </header>
-
-
-      
+      </header>      
       <main className={styles.main}>
         <section className={styles.hero}>
           <article className={styles.article}>

@@ -1,4 +1,4 @@
-.recycleContainer {
+/* .recycleContainer {
     background-color: #111;
     color: #fff;
     padding: 20px;
@@ -7,7 +7,7 @@
     max-width: 400px;
     margin: auto;
     text-align: center;
-  }
+  } */
   
   .materialsList {
     display: grid;
@@ -41,6 +41,9 @@
   .materialIcon {
     font-size: 3rem;
     margin-bottom: 10px;
+    width: 1.3em;
+    color: white;
+    margin-bottom: 8px; 
   }
   
   .materialName {

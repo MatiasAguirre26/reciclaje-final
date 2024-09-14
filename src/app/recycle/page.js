@@ -5,17 +5,25 @@ import styles from '@/styles/recycle-page.module.css';
 import Navbar from '@/components/navbar';
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button"
+
+//Iconos
+import MetalIcon from '/public/icons/metal.svg';
+import GlassIcon from '/public/icons/glass.svg';
+import PaperIcon from '/public/icons/paper.svg';
+import BoxIcon from '/public/icons/box.svg';
+import PlasticIcon from '/public/icons/plastic.svg';
+
+
 import create from "zustand"
 
 
 const materialsList = [
-    { name: 'Metales', icon: '🛠️' },
-    { name: 'Vidrio', icon: '🍾' },
-    { name: 'Papel', icon: '📄' },
-    { name: 'Cartón', icon: '📦' },
-    { name: 'Plástico', icon: '🧴' },
-  ];
-
+  { name: 'Metales', icon: <MetalIcon /> },
+  { name: 'Vidrio', icon: <GlassIcon /> },
+  { name: 'Papel', icon: <PaperIcon /> },
+  { name: 'Cartón', icon: <BoxIcon /> },
+  { name: 'Plástico', icon: <PlasticIcon /> },
+];
 export default function Recycle() {
     const [selectedMaterials, setSelectedMaterials] = useState([]);
 
@@ -28,9 +36,11 @@ export default function Recycle() {
     };
 
     return (
-      <div className={styles.recycleContainer}>
-        <h2>Reciclar</h2>
-        <p>Selecciona los materiales que vas a reciclar</p>
+      <div className="mx-[30px] grid gap-[20px] text-center">
+        <div className="text-white">
+          <h2>Reciclar</h2>
+          <p>Selecciona los materiales que vas a reciclar</p>          
+        </div>
         <div className={styles.materialsList}>
           {materialsList.map((material, index) => (
             <button
@@ -45,8 +55,12 @@ export default function Recycle() {
             </button>
           ))}
         </div>
-        <Link href="recycle/locations" className={buttonVariants({ })}>Siguiente</Link>
-        <Navbar />
+        <div>
+          <Link href="recycle/locations" className={buttonVariants({variant: "blackText"})}>Siguiente</Link>          
+        </div>
+        <div>
+          <Navbar />          
+        </div>
       </div>
     )
 }
