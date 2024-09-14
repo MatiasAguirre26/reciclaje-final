@@ -91,7 +91,7 @@ export default function locations() {
                 </Select>                
             </div>
             <div className='text-center'>
-                <Link href="locations/1" className={buttonVariants({variant: "blackText"})}>Siguiente</Link>                
+                <Link href="locations/1" className={buttonVariants({variant: "blackText", size: "lg", className: "rounded-full px-18"})}>Siguiente</Link>                
             </div>
         </div>
 

@@ -11,7 +11,7 @@ export default function confirm() {
             <p>Horario</p>
             <hr/>
             <p>Materiales elejidos a reciclar</p>
-            <Link href="/dashboard" className={buttonVariants({variant: "blackText"})}>Confirmar</Link>
+            <Link href="/dashboard" className={buttonVariants({variant: "blackText", size: "lg", className: "rounded-full px-18"})}>Confirmar</Link>
         </div>
     )
 }
