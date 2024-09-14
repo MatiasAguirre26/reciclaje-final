@@ -13,8 +13,8 @@ import {
 
 export default function locations() {
     return (
-        <div className="mx-[30px] grid gap-[20px] text-center text-white justify-items-center">
-            <div>
+        <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
+            <div className="text-3xl">
                 <h1>Lugares de reciclado</h1>                
             </div>
             <div>
@@ -90,7 +90,7 @@ export default function locations() {
                 </SelectContent>
                 </Select>                
             </div>
-            <div>
+            <div className='text-center'>
                 <Link href="locations/1" className={buttonVariants({variant: "blackText"})}>Siguiente</Link>                
             </div>
         </div>

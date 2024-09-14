@@ -36,9 +36,9 @@ export default function Recycle() {
     };
 
     return (
-      <div className="mx-[30px] grid gap-[20px] text-center">
-        <div className="text-white">
-          <h2>Reciclar</h2>
+      <div className="mx-[30px] grid gap-[20px] text-center justify-center my-8 text-white ">
+        <div>
+          <h2 className='text-3xl'>Reciclar</h2>
           <p>Selecciona los materiales que vas a reciclar</p>          
         </div>
         <div className={styles.materialsList}>
