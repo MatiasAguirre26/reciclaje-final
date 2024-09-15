@@ -8,8 +8,8 @@
     border-radius: 60px; /* Añadimos border-radius */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar el nav */
 
-    max-width: 90%;
-    margin: 20px auto;
+    /* max-width: 90%;
+    margin: 20px auto; */
 }
   
   .navList {

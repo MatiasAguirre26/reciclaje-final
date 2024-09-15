@@ -50,3 +50,22 @@
     font-size: 1rem;
   }
   
+
+  .selectTrigger {
+    background-color: var(--color-secundary);
+    color: var(--color-white);
+    width: 100%;
+    border: 0;
+  }
+  
+  .selectContent {
+    background-color: var(--color-secundary);
+  }
+  
+  .selectLabel {
+    color: var(--color-white);
+  }
+  
+  .selectItem {
+    color: var(--color-white);
+  }

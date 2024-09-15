@@ -38,7 +38,7 @@ export default function Recycle() {
     return (
       <div className="mx-[30px] grid gap-[20px] text-center justify-center my-8 text-white ">
         <div>
-          <h2 className='text-3xl'>Reciclar</h2>
+          <h2 className='mb-8 text-3xl'>Reciclar</h2>
           <p>Selecciona los materiales que vas a reciclar</p>          
         </div>
         <div className={styles.materialsList}>
@@ -56,7 +56,7 @@ export default function Recycle() {
           ))}
         </div>
         <div>
-          <Link href="recycle/locations" className={buttonVariants({variant: "blackText", size: "lg"})}>Siguiente</Link>          
+          <Link href="recycle/locations" className={buttonVariants({variant: "blackText", size: "lg", className: "font-bold"})}>Siguiente</Link>          
         </div>
         <div>
           <Navbar />          

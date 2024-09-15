@@ -1,4 +1,5 @@
 import styles from '@/styles/recycle-page.module.css';
+import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -14,84 +15,61 @@ import {
 export default function locations() {
     return (
         <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
-            <div className="text-3xl">
-                <h1>Lugares de reciclado</h1>                
+            <div className="mb-8 text-3xl text-center">
+                <h1>Lugares de reciclados</h1>                
             </div>
             <div>
                 <img src='/assets/header.webp' alt='imagen-del-lugar'></img>    
             </div>
-            <div>
-                <p>Nombre del lugar</p>
-                <p>Direccion</p>
-                <p>Horario</p>
+            <p>Nombre del lugar</p>
+            <div className="flex items-center">
+                <MapPinIcon className="w-6 h-6 mr-2" />
+                <p>Dirección</p>
             </div>
-            <div>
-                <hr/>
-                <p>Elige el lugar donde vas a llevar el reciclaje</p>                          
+            <div className="flex items-center">
+                <ClockIcon className="w-6 h-6 mr-2" />
+                <p>Horarios</p>
             </div>
+            <hr/>
+            <p>Elige el lugar donde vas a llevar el reciclaje</p>                          
             <div>
-                <Select>
-                <SelectTrigger className="w-[280px] text-black">
-                    <SelectValue placeholder="Select a timezone" />
+            <Select>
+                <SelectTrigger className={`${styles.selectTrigger} w-[280px] text-black`}>
+                    <SelectValue placeholder="Selecciona una ubicación" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className={styles.selectContent}>
                     <SelectGroup>
-                    <SelectLabel>North America</SelectLabel>
-                    <SelectItem value="est">Eastern Standard Time (EST)</SelectItem>
-                    <SelectItem value="cst">Central Standard Time (CST)</SelectItem>
-                    <SelectItem value="mst">Mountain Standard Time (MST)</SelectItem>
-                    <SelectItem value="pst">Pacific Standard Time (PST)</SelectItem>
-                    <SelectItem value="akst">Alaska Standard Time (AKST)</SelectItem>
-                    <SelectItem value="hst">Hawaii Standard Time (HST)</SelectItem>
-                    </SelectGroup>
-                    <SelectGroup>
-                    <SelectLabel>Europe & Africa</SelectLabel>
-                    <SelectItem value="gmt">Greenwich Mean Time (GMT)</SelectItem>
-                    <SelectItem value="cet">Central European Time (CET)</SelectItem>
-                    <SelectItem value="eet">Eastern European Time (EET)</SelectItem>
-                    <SelectItem value="west">
-                        Western European Summer Time (WEST)
-                    </SelectItem>
-                    <SelectItem value="cat">Central Africa Time (CAT)</SelectItem>
-                    <SelectItem value="eat">East Africa Time (EAT)</SelectItem>
-                    </SelectGroup>
-                    <SelectGroup>
-                    <SelectLabel>Asia</SelectLabel>
-                    <SelectItem value="msk">Moscow Time (MSK)</SelectItem>
-                    <SelectItem value="ist">India Standard Time (IST)</SelectItem>
-                    <SelectItem value="cst_china">China Standard Time (CST)</SelectItem>
-                    <SelectItem value="jst">Japan Standard Time (JST)</SelectItem>
-                    <SelectItem value="kst">Korea Standard Time (KST)</SelectItem>
-                    <SelectItem value="ist_indonesia">
-                        Indonesia Central Standard Time (WITA)
-                    </SelectItem>
-                    </SelectGroup>
-                    <SelectGroup>
-                    <SelectLabel>Australia & Pacific</SelectLabel>
-                    <SelectItem value="awst">
-                        Australian Western Standard Time (AWST)
-                    </SelectItem>
-                    <SelectItem value="acst">
-                        Australian Central Standard Time (ACST)
-                    </SelectItem>
-                    <SelectItem value="aest">
-                        Australian Eastern Standard Time (AEST)
-                    </SelectItem>
-                    <SelectItem value="nzst">New Zealand Standard Time (NZST)</SelectItem>
-                    <SelectItem value="fjt">Fiji Time (FJT)</SelectItem>
-                    </SelectGroup>
-                    <SelectGroup>
-                    <SelectLabel>South America</SelectLabel>
-                    <SelectItem value="art">Argentina Time (ART)</SelectItem>
-                    <SelectItem value="bot">Bolivia Time (BOT)</SelectItem>
-                    <SelectItem value="brt">Brasilia Time (BRT)</SelectItem>
-                    <SelectItem value="clt">Chile Standard Time (CLT)</SelectItem>
+                        <SelectLabel className={styles.selectLabel}>Ubicaciones de reciclaje</SelectLabel>
+                        <SelectItem value="location1" className={styles.selectItem}>
+                            <div className="flex items-center">
+                                <MapPinIcon className="w-4 h-4 mr-2" />
+                                <span>Calle Falsa 123, Ciudad A</span>
+                            </div>
+                        </SelectItem>
+                        <SelectItem value="location2" className={styles.selectItem}>
+                            <div className="flex items-center">
+                                <MapPinIcon className="w-4 h-4 mr-2" />
+                                <span>Avenida Siempreviva 742, Ciudad B</span>
+                            </div>
+                        </SelectItem>
+                        <SelectItem value="location3" className={styles.selectItem}>
+                            <div className="flex items-center">
+                                <MapPinIcon className="w-4 h-4 mr-2" />
+                                <span>Plaza Central, Ciudad C</span>
+                            </div>
+                        </SelectItem>
+                        <SelectItem value="location4" className={styles.selectItem}>
+                            <div className="flex items-center">
+                                <MapPinIcon className="w-4 h-4 mr-2" />
+                                <span>Barrio Verde, Ciudad D</span>
+                            </div>
+                        </SelectItem>
                     </SelectGroup>
                 </SelectContent>
-                </Select>                
+            </Select>             
             </div>
             <div className='text-center'>
-                <Link href="locations/1" className={buttonVariants({variant: "blackText", size: "lg", className: "rounded-full px-18"})}>Siguiente</Link>                
+                <Link href="locations/1" className={buttonVariants({variant: "blackText", size: "lg", className: "font-bold"})}>Siguiente</Link>                
             </div>
         </div>
 
