@@ -41,13 +41,17 @@
 //     )
 // }
 
-'use client'
-import { MapPinIcon } from '@heroicons/react/24/outline';
-import Link from "next/link";
-import useRecycleStore from "@/app/stores/useRecycleStore"; // Importar Zustand
+'use client';
 
-export default function Confirm() {
-  const { selectedMaterials, selectedLocation } = useRecycleStore(); // Obtener datos de Zustand
+import styles from '@/styles/recycle-page.module.css';
+import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import useRecycleStore from "@/app/stores/useRecycleStore"; // Importar zustand
+
+export default function ConfirmationPage() {
+  // Obtener datos desde Zustand
+  const { selectedMaterials, selectedLocation } = useRecycleStore();
 
   return (
     <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
@@ -55,31 +59,44 @@ export default function Confirm() {
         <h1>Confirmar Reciclaje</h1>
       </div>
 
-      <div>
-        <h2>Materiales Seleccionados:</h2>
+      {/* Mostrar los materiales seleccionados */}
+      <div className={styles.materialsSection}>
+        <h2 className='text-xl'>Materiales seleccionados:</h2>
         <ul>
           {selectedMaterials.length > 0 ? (
-            selectedMaterials.map((material, index) => <li key={index}>{material}</li>)
+            selectedMaterials.map((material, index) => (
+              <li key={index}>{material}</li>
+            ))
           ) : (
-            <p>No seleccionaste materiales</p>
+            <li>No se seleccionaron materiales.</li>
           )}
         </ul>
       </div>
 
-      <div>
-        <h2>Ubicación Seleccionada:</h2>
+      {/* Mostrar la ubicación seleccionada */}
+      <div className={styles.locationSection}>
+        <h2 className='text-xl'>Ubicación seleccionada:</h2>
         {selectedLocation ? (
-          <div className="flex items-center">
-            <MapPinIcon className="w-6 h-6 mr-2" />
-            <p>{selectedLocation}</p>
+          <div>
+            <p>Nombre del lugar: {selectedLocation.name}</p>
+            <div className="flex items-center">
+              <MapPinIcon className="w-6 h-6 mr-2" />
+              <p>{selectedLocation.address}</p>
+            </div>
+            <div className="flex items-center">
+              <ClockIcon className="w-6 h-6 mr-2" />
+              <p>{selectedLocation.hours}</p>
+            </div>
           </div>
         ) : (
-          <p>No seleccionaste una ubicación</p>
+          <p>No se seleccionó ninguna ubicación.</p>
         )}
       </div>
 
       <div className='text-center'>
-        <Link href="/recycle/success" className="btn btn-primary">Confirmar</Link>
+        <Link href="/confirmation/success" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>
+          Confirmar
+        </Link>
       </div>
     </div>
   );
