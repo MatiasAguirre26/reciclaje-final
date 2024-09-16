@@ -239,7 +239,7 @@
 //     );
 // }
 
-import { useState } from "react"; // Importar useState para manejar el estado local
+import { useState, useEffect } from "react"; // Importar useState para manejar el estado local
 import styles from '@/styles/recycle-page.module.css';
 import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
@@ -259,6 +259,21 @@ export default function Locations() {
     const [currentLocation, setCurrentLocation] = useState(null); // Estado local para la ubicación seleccionada
     const { setSelectedLocation } = useRecycleStore(); // Acceder al setter para guardar la ubicación
 
+    // Definir ubicaciones con dirección, horarios, e imagenes
+    const locations = [
+      { value: "location1", name: "Calle Falsa 123, Ciudad A", address: "Calle Falsa 123", hours: "9am - 5pm", imageUrl: "/assets/location1.jpg" },
+      { value: "location2", name: "Avenida Siempreviva 742, Ciudad B", address: "Avenida Siempreviva 742", hours: "10am - 6pm", imageUrl: "/assets/location2.jpg" },
+      { value: "location3", name: "Plaza Central, Ciudad C", address: "Plaza Central", hours: "8am - 4pm", imageUrl: "/assets/location3.jpg" },
+      { value: "location4", name: "Barrio Verde, Ciudad D", address: "Barrio Verde", hours: "11am - 7pm", imageUrl: "/assets/location4.jpg" },
+    ];
+
+    // Usar useEffect para seleccionar una ubicación por defecto cuando se monta el componente
+    useEffect(() => {
+      const defaultLocation = locations[0]; // Selecciona la primera ubicación por defecto (o cualquier otra)
+      setCurrentLocation(defaultLocation);
+      setSelectedLocation(defaultLocation);
+    }, []); // Se ejecuta solo una vez al montar el componente
+
     // Manejar la selección de ubicación
     const handleLocationChange = (value) => {
         const selectedLocation = locations.find((location) => location.value === value);
@@ -266,21 +281,20 @@ export default function Locations() {
         setCurrentLocation(selectedLocation); // Actualizar el estado local para mostrar los detalles
     };
 
-    // Definir ubicaciones con dirección y horarios
-    const locations = [
-        { value: "location1", name: "Calle Falsa 123, Ciudad A", address: "Calle Falsa 123", hours: "9am - 5pm" },
-        { value: "location2", name: "Avenida Siempreviva 742, Ciudad B", address: "Avenida Siempreviva 742", hours: "10am - 6pm" },
-        { value: "location3", name: "Plaza Central, Ciudad C", address: "Plaza Central", hours: "8am - 4pm" },
-        { value: "location4", name: "Barrio Verde, Ciudad D", address: "Barrio Verde", hours: "11am - 7pm" },
-    ];
-
     return (
         <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
             <div className="mb-8 text-3xl text-center">
                 <h1>Lugares de reciclados</h1>
             </div>
+            {/* Mostrar la imagen de la ubicación seleccionada */}
             <div>
-                <img src='/assets/header.webp' alt='imagen-del-lugar'></img>
+            {currentLocation && (
+                <img
+                    src={currentLocation.imageUrl}
+                    alt={`Imagen de ${currentLocation.name}`}
+                    className="object-cover w-full h-64 rounded-lg"
+                />
+            )}
             </div>
 
             {/* Mostrar los datos dinámicos de la ubicación seleccionada */}
@@ -303,7 +317,7 @@ export default function Locations() {
             <hr />
             <p>Elige el lugar donde vas a llevar el reciclaje</p>
             <div>
-                <Select onValueChange={handleLocationChange}>
+                <Select defaultValue={locations[0].value} onValueChange={handleLocationChange}>
                     <SelectTrigger className={`${styles.selectTrigger} w-[280px] text-black`}>
                         <SelectValue placeholder="Selecciona una ubicación" />
                     </SelectTrigger>
