@@ -162,6 +162,84 @@
 // }
 
 'use client'
+// import styles from '@/styles/recycle-page.module.css';
+// import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
+// import Link from "next/link";
+// import { buttonVariants } from "@/components/ui/button";
+// import useRecycleStore from "@/app/stores/useRecycleStore"; // Importar Zustand
+// import {
+//     Select,
+//     SelectContent,
+//     SelectGroup,
+//     SelectItem,
+//     SelectLabel,
+//     SelectTrigger,
+//     SelectValue,
+// } from "@/components/ui/select";
+
+// export default function Locations() {
+//     const { setSelectedLocation } = useRecycleStore(); // Acceder al setter para guardar la ubicación
+
+//     const handleLocationChange = (value) => {
+//         // Guardar la ubicación seleccionada en el estado de Zustand
+//         const selectedLocation = locations.find((location) => location.value === value);
+//         setSelectedLocation(selectedLocation);
+//     };
+
+//     const locations = [
+//         { value: "location1", name: "Calle Falsa 123, Ciudad A", address: "Calle Falsa 123", hours: "9am - 5pm" },
+//         { value: "location2", name: "Avenida Siempreviva 742, Ciudad B", address: "Avenida Siempreviva 742", hours: "10am - 6pm" },
+//         { value: "location3", name: "Plaza Central, Ciudad C", address: "Plaza Central", hours: "8am - 4pm" },
+//         { value: "location4", name: "Barrio Verde, Ciudad D", address: "Barrio Verde", hours: "11am - 7pm" },
+//     ];
+
+//     return (
+//         <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
+//             <div className="mb-8 text-3xl text-center">
+//                 <h1>Lugares de reciclados</h1>
+//             </div>
+//             <div>
+//                 <img src='/assets/header.webp' alt='imagen-del-lugar'></img>
+//             </div>
+//             <p>Nombre del lugar</p>
+//             <div className="flex items-center">
+//                 <MapPinIcon className="w-6 h-6 mr-2" />
+//                 <p>Dirección</p>
+//             </div>
+//             <div className="flex items-center">
+//                 <ClockIcon className="w-6 h-6 mr-2" />
+//                 <p>Horarios</p>
+//             </div>
+//             <hr />
+//             <p>Elige el lugar donde vas a llevar el reciclaje</p>
+//             <div>
+//                 <Select onValueChange={handleLocationChange}>
+//                     <SelectTrigger className={`${styles.selectTrigger} w-[280px] text-black`}>
+//                         <SelectValue placeholder="Selecciona una ubicación" />
+//                     </SelectTrigger>
+//                     <SelectContent className={styles.selectContent}>
+//                         <SelectGroup>
+//                             <SelectLabel className={styles.selectLabel}>Ubicaciones de reciclaje</SelectLabel>
+//                             {locations.map((location) => (
+//                                 <SelectItem key={location.value} value={location.value} className={styles.selectItem}>
+//                                     <div className="flex items-center">
+//                                         <MapPinIcon className="w-4 h-4 mr-2" />
+//                                         <span>{location.name}</span>
+//                                     </div>
+//                                 </SelectItem>
+//                             ))}
+//                         </SelectGroup>
+//                     </SelectContent>
+//                 </Select>
+//             </div>
+//             <div className='text-center'>
+//                 <Link href="locations/1" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>Siguiente</Link>
+//             </div>
+//         </div>
+//     );
+// }
+
+import { useState } from "react"; // Importar useState para manejar el estado local
 import styles from '@/styles/recycle-page.module.css';
 import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
@@ -178,14 +256,17 @@ import {
 } from "@/components/ui/select";
 
 export default function Locations() {
+    const [currentLocation, setCurrentLocation] = useState(null); // Estado local para la ubicación seleccionada
     const { setSelectedLocation } = useRecycleStore(); // Acceder al setter para guardar la ubicación
 
+    // Manejar la selección de ubicación
     const handleLocationChange = (value) => {
-        // Guardar la ubicación seleccionada en el estado de Zustand
         const selectedLocation = locations.find((location) => location.value === value);
-        setSelectedLocation(selectedLocation);
+        setSelectedLocation(selectedLocation); // Guardar la ubicación en Zustand
+        setCurrentLocation(selectedLocation); // Actualizar el estado local para mostrar los detalles
     };
 
+    // Definir ubicaciones con dirección y horarios
     const locations = [
         { value: "location1", name: "Calle Falsa 123, Ciudad A", address: "Calle Falsa 123", hours: "9am - 5pm" },
         { value: "location2", name: "Avenida Siempreviva 742, Ciudad B", address: "Avenida Siempreviva 742", hours: "10am - 6pm" },
@@ -201,15 +282,24 @@ export default function Locations() {
             <div>
                 <img src='/assets/header.webp' alt='imagen-del-lugar'></img>
             </div>
-            <p>Nombre del lugar</p>
-            <div className="flex items-center">
-                <MapPinIcon className="w-6 h-6 mr-2" />
-                <p>Dirección</p>
-            </div>
-            <div className="flex items-center">
-                <ClockIcon className="w-6 h-6 mr-2" />
-                <p>Horarios</p>
-            </div>
+
+            {/* Mostrar los datos dinámicos de la ubicación seleccionada */}
+            {currentLocation ? (
+                <>
+                    <p>{currentLocation.name}</p>
+                    <div className="flex items-center">
+                        <MapPinIcon className="w-6 h-6 mr-2" />
+                        <p>{currentLocation.address}</p>
+                    </div>
+                    <div className="flex items-center">
+                        <ClockIcon className="w-6 h-6 mr-2" />
+                        <p>{currentLocation.hours}</p>
+                    </div>
+                </>
+            ) : (
+                <p>Selecciona una ubicación para ver los detalles</p>
+            )}
+            
             <hr />
             <p>Elige el lugar donde vas a llevar el reciclaje</p>
             <div>
@@ -232,8 +322,11 @@ export default function Locations() {
                     </SelectContent>
                 </Select>
             </div>
+            
             <div className='text-center'>
-                <Link href="locations/1" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>Siguiente</Link>
+                <Link href="locations/1" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>
+                    Siguiente
+                </Link>
             </div>
         </div>
     );
