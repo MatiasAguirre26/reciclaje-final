@@ -54,7 +54,7 @@ export default function Recycle() {
         ))}
       </div>
       <div>
-        <Link href="recycle/locations" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>Siguiente</Link>
+        <Link href="recycle/locations" className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })}>Siguiente</Link>
       </div>
       <div>
         <Navbar />
