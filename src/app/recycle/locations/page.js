@@ -102,7 +102,7 @@ export default function Locations() {
                 <Link href="./" className={buttonVariants({ variant: "secondary", size: "lg", className: "font-bold" })}>
                         Volver
                 </Link>
-                <Link href="locations/1" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>
+                <Link href="locations/1" className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })}>
                     Siguiente
                 </Link>
             </div>

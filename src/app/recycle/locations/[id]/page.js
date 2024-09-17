@@ -57,8 +57,11 @@ export default function ConfirmationPage() {
         )}
       </div>
 
-      <div className='text-center'>
-        <Link href="/confirmation/success" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>
+      <div className='flex justify-center gap-4'>
+        <Link href="./" className={buttonVariants({ variant: "secondary", size: "lg", className: "font-bold" })}>
+          Volver
+        </Link>
+        <Link href="/confirmation/success" className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })}>
           Confirmar
         </Link>
       </div>

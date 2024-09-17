@@ -7,6 +7,7 @@
   --color-secundary: #2D3A3A;
   --background-color: #040F0F;
   --color-white: #F0E7E7;
+  --color-hover: #0AA121;
 }
 
 @media (prefers-color-scheme: dark) {
