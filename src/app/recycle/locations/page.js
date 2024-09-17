@@ -299,22 +299,22 @@ export default function Locations() {
 
             {/* Mostrar los datos dinámicos de la ubicación seleccionada */}
             {currentLocation ? (
-                <>
-                    <p>{currentLocation.name}</p>
-                    <div className="flex items-center">
-                        <MapPinIcon className="w-6 h-6 mr-2" />
-                        <p>{currentLocation.address}</p>
-                    </div>
-                    <div className="flex items-center">
-                        <ClockIcon className="w-6 h-6 mr-2" />
-                        <p>{currentLocation.hours}</p>
-                    </div>
-                </>
+                <div className="p-4 bg-[--color-secundary] border-l-8 border-[--color-primary] rounded-lg shadow-md">
+                <p className="mb-2 text-lg font-semibold">{currentLocation.name}</p>
+                <div className="flex items-center mb-2">
+                    <MapPinIcon className="w-6 h-6 mr-2" />
+                    <p>{currentLocation.address}</p>
+                </div>
+                <div className="flex items-center">
+                    <ClockIcon className="w-6 h-6 mr-2" />
+                    <p>{currentLocation.hours}</p>
+                </div>
+            </div>
             ) : (
                 <p>Selecciona una ubicación para ver los detalles</p>
             )}
             
-            <hr />
+            <hr className="border-[--color-secundary]" />
             <p>Elige el lugar donde vas a llevar el reciclaje</p>
             <div>
                 <Select defaultValue={locations[0].value} onValueChange={handleLocationChange}>
