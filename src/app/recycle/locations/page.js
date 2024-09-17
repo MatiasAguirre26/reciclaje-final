@@ -99,7 +99,7 @@ export default function Locations() {
             </div>
             
             <div className='flex justify-center gap-4'>
-                <Link href="./" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>
+                <Link href="./" className={buttonVariants({ variant: "secondary", size: "lg", className: "font-bold" })}>
                         Volver
                 </Link>
                 <Link href="locations/1" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>
