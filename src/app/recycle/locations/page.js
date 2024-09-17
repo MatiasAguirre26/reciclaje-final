@@ -98,7 +98,10 @@ export default function Locations() {
                 </Select>
             </div>
             
-            <div className='text-center'>
+            <div className='flex justify-center gap-4'>
+                <Link href="./" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>
+                        Volver
+                </Link>
                 <Link href="locations/1" className={buttonVariants({ variant: "blackText", size: "lg", className: "font-bold" })}>
                     Siguiente
                 </Link>
