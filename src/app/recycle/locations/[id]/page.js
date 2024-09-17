@@ -6,6 +6,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import useRecycleStore from "@/app/stores/useRecycleStore"; // Importar zustand
 
+
 export default function ConfirmationPage() {
   // Obtener datos desde Zustand
   const { selectedMaterials, selectedLocation } = useRecycleStore();
@@ -19,15 +20,21 @@ export default function ConfirmationPage() {
       {/* Mostrar los materiales seleccionados */}
       <div className={styles.materialsSection}>
         <h2 className='text-xl'>Materiales seleccionados:</h2>
-        <ul>
-          {selectedMaterials.length > 0 ? (
-            selectedMaterials.map((material, index) => (
-              <li key={index}>{material}</li>
-            ))
-          ) : (
-            <li>No se seleccionaron materiales.</li>
-          )}
-        </ul>
+        {selectedMaterials.length === 0 ? (
+          <p>No has seleccionado ningún material.</p>
+        ) : (
+        <div className={styles.materialsList}>
+        {selectedMaterials.map((material, index) => (
+          <div
+            key={index}
+            className={"bg-[--color-secundary] text-white rounded-lg p-4 flex flex-col items-center justify-center"}
+          >
+            <div className={styles.materialIcon}>{material.icon}</div>
+            <p className={styles.materialName}>{material.name}</p>
+          </div>
+        ))}
+        </div>
+        )}
       </div>
 
       {/* Mostrar la ubicación seleccionada */}

@@ -44,9 +44,9 @@ export default function Recycle() {
           <button
             key={index}
             className={`${styles.materialButton} ${
-              selectedMaterials.includes(material.name) ? styles.selected : ''
+              selectedMaterials.includes(material) ? styles.selected : ''
             }`}
-            onClick={() => handleSelectMaterial(material.name)}
+            onClick={() => handleSelectMaterial(material)}
           >
             <div className={styles.materialIcon}>{material.icon}</div>
             <p className={styles.materialName}>{material.name}</p>
