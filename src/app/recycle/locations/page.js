@@ -283,7 +283,7 @@ export default function Locations() {
 
     return (
         <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
-            <div className="mb-8 text-3xl text-center">
+            <div className="mb-3 text-3xl text-center">
                 <h1>Lugares de reciclados</h1>
             </div>
             {/* Mostrar la imagen de la ubicación seleccionada */}
@@ -299,17 +299,17 @@ export default function Locations() {
 
             {/* Mostrar los datos dinámicos de la ubicación seleccionada */}
             {currentLocation ? (
-                <div className="p-4 bg-[--color-secundary] border-l-8 border-[--color-primary] rounded-lg shadow-md">
-                <p className="mb-2 text-lg font-semibold">{currentLocation.name}</p>
-                <div className="flex items-center mb-2">
-                    <MapPinIcon className="w-6 h-6 mr-2" />
-                    <p>{currentLocation.address}</p>
+                <div className="mb-5 p-4 bg-[--color-secundary] border-l-8 border-[--color-primary] rounded-lg drop-shadow-[0_35px_35px_rgba(0,0,0,100)]">
+                    <p className="mb-2 text-lg font-semibold">{currentLocation.name}</p>
+                    <div className="flex items-center mb-2">
+                        <MapPinIcon className="w-6 h-6 mr-2" />
+                        <p>{currentLocation.address}</p>
+                    </div>
+                    <div className="flex items-center">
+                        <ClockIcon className="w-6 h-6 mr-2" />
+                        <p>{currentLocation.hours}</p>
+                    </div>
                 </div>
-                <div className="flex items-center">
-                    <ClockIcon className="w-6 h-6 mr-2" />
-                    <p>{currentLocation.hours}</p>
-                </div>
-            </div>
             ) : (
                 <p>Selecciona una ubicación para ver los detalles</p>
             )}
