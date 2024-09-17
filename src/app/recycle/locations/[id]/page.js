@@ -1,46 +1,3 @@
-// import Link from "next/link";
-// import { buttonVariants } from "@/components/ui/button"
-// import {MapPinIcon, ClockIcon, UserIcon, MailIcon} from '@heroicons/react/24/outline';
-
-// export default function confirm() {
-//     return (
-//         <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
-//             <div className="mb-8 text-3xl text-center">
-//                 <h1>Confirmar datos</h1>                
-//             </div>
-//             <h5>Datos del usuario</h5>
-//             <div className="grid gap-3 p-4 rounded-2xl outline outline-2 outline-[var(--color-secundary)]">
-//                 <div className="flex items-center">
-//                     <UserIcon className="w-6 h-6 mr-2" />
-//                     <p>Nombre del usuario</p>
-//                 </div>
-//                 <div className="flex items-center">
-//                     <UserIcon className="w-6 h-6 mr-2" />
-//                     <p>Email</p>
-//                 </div>                
-//             </div>
-//             <h5>Ubicacion</h5>
-//             <div className="grid gap-3 p-4 rounded-2xl outline outline-2 outline-[var(--color-secundary)]">
-//                 <p>Nombre del lugar</p>
-//                 <div className="flex items-center">
-//                     <MapPinIcon className="w-6 h-6 mr-2" />
-//                     <p>Dirección</p>
-//                 </div>
-//                 <div className="flex items-center">
-//                     <ClockIcon className="w-6 h-6 mr-2" />
-//                     <p>Horarios</p>
-//                 </div>                
-//             </div>
-
-//             <hr/>
-//             <p>Materiales elejidos a reciclar</p>
-//             <div className='text-center'>
-//                 <Link href="/dashboard" className={buttonVariants({variant: "blackText", size: "lg", className: "font-bold"})}>Confirmar</Link>
-//             </div>
-//         </div>
-//     )
-// }
-
 'use client';
 
 import styles from '@/styles/recycle-page.module.css';
@@ -75,11 +32,11 @@ export default function ConfirmationPage() {
 
       {/* Mostrar la ubicación seleccionada */}
       <div className={styles.locationSection}>
-        <h2 className='text-xl'>Ubicación seleccionada:</h2>
+        <h2 className='mb-3 text-xl'>Ubicación seleccionada:</h2>
         {selectedLocation ? (
-          <div>
-            <p>Nombre del lugar: {selectedLocation.name}</p>
-            <div className="flex items-center">
+          <div className="mb-5 p-4 bg-[--color-secundary] border-l-8 border-[--color-primary] rounded-lg drop-shadow-[0_35px_35px_rgba(0,0,0,100)]">
+            <p className='mb-2 text-lg font-semibold'>Nombre del lugar: {selectedLocation.name}</p>
+            <div className="flex items-center mb-3">
               <MapPinIcon className="w-6 h-6 mr-2" />
               <p>{selectedLocation.address}</p>
             </div>
