@@ -5,7 +5,10 @@ export default function rewards() {
     const categories = ['Todos', 'Alimentos', 'Bebidas', 'Higiene'];
     const rewards = Array(6).fill({ discount: '15%', category: 'Alimentos' });
     return (
-    <div className={styles.rewardsContainer}>
+    <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
+        <div className="mb-8 text-3xl text-center">
+          <h1>Recompensas</h1>
+        </div>
         <div className={styles.header}>
           <button className={styles.closeButton}>✖</button>
           <h2>Recompensas</h2>

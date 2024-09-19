@@ -48,12 +48,12 @@ export default function Locations() {
                 <h1>Lugares de reciclados</h1>
             </div>
             {/* Mostrar la imagen de la ubicación seleccionada */}
-            <div>
+            <div className="min-w-8">
             {currentLocation && (
                 <img
                     src={currentLocation.imageUrl}
                     alt={`Imagen de ${currentLocation.name}`}
-                    className="object-cover w-full h-64 rounded-lg"
+                    className="object-cover w-full max-w-xs rounded-lg h-60 max-h-64"
                 />
             )}
             </div>

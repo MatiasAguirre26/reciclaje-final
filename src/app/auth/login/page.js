@@ -1,12 +1,14 @@
 'use client'
-import { signIn } from 'next-auth/react';
-import { useState } from 'react';
+import { signIn, SessionProvider } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import styles from '@/styles/login.module.css';
 
-export default function LoginPage() {
+function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ export default function LoginPage() {
       setError(res.error);
     } else {
       // Redirigir al usuario a la página de inicio u otra ruta deseada
-      window.location.href = '/dashboard';
+      router.push('/dashboard');
     }
   };
 
@@ -44,3 +46,11 @@ export default function LoginPage() {
   );
 }
 console.log(process.env.NEXT_PUBLIC_API_URL);
+
+export default function Login() {
+  return (
+    <SessionProvider>
+      <LoginPage />
+    </SessionProvider>
+  );
+}

@@ -29,6 +29,19 @@ export const authOptions = {
       signIn: '/login',
     },
     secret: process.env.NEXTAUTH_SECRET,
+
+    callbacks: {
+      async session({ session, token }) {
+        if (token?.id) {
+          session.user.id = token.id;
+        }
+        return session;
+      },
+      async jwt({ token, user }) {
+        if (user) {
+          token.id = user.id;
+        }
+        return token;
+      },
+    },
 }
-
-
