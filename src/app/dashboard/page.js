@@ -1,8 +1,13 @@
+'use client'
+
 import Navbar from '@/components/navbar';
 import Link from 'next/link';
 import styles from '@/styles/dashboard.module.css';
+import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
+    const {data} = useSession()
+    console.log(data)
     return (
     <div className={`${styles.container} text-white`}>
       <header className={styles.header}>

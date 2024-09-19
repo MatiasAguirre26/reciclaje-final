@@ -1,4 +1,4 @@
-
+'use client'
 import Navbar from '@/components/navbar';
 import styles from '@/styles/map-page.module.css';
 

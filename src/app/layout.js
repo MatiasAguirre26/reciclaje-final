@@ -1,8 +1,10 @@
+
+
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from '@/components/footer';
 import styles from "@/styles/home.module.css";
-
+import SessionProvider  from '@/auth/session-provider';
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '700'] });
 
 export const metadata = {
@@ -13,8 +15,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className={(poppins.className, styles.body)} >  
+      <body className={(poppins.className, styles.body)} >
+      <SessionProvider>
       {children}
+      </SessionProvider>
+      
       <Footer /> 
       </body>
     </html>

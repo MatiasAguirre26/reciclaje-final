@@ -18,6 +18,7 @@ export const authOptions = {
           const user = await res.json();
   
           if (res.ok && user) {
+            console.log(user)
             return user;
           } else {
             throw new Error(user.error || 'Error al iniciar sesión');
@@ -32,14 +33,24 @@ export const authOptions = {
 
     callbacks: {
       async session({ session, token }) {
-        if (token?.id) {
-          session.user.id = token.id;
-        }
-        return session;
+        console.log('session session:', session)
+        console.log('session token:', token)
+        // if (token?.id) {
+        //   session.user.id = token.id;
+        // }
+        return {
+          ...session, 
+          user:{
+            ...session.user,
+            userId: token.id
+          }
+        };
       },
       async jwt({ token, user }) {
+        console.log('jwt token:', token)
+        console.log('jwt user:', user)
         if (user) {
-          token.id = user.id;
+          token.id = user.userId;
         }
         return token;
       },

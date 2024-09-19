@@ -3,9 +3,11 @@
 import Navbar from '@/components/navbar';
 import SearchBar  from "@/components/search-bar";
 import styles from '@/styles/rewards-page.module.css';
+import CoinsIcon from '/public/icons/coins.svg';
+
 
 export default function rewards() {
-    const categories = ['Todos', 'Alimentos', 'Bebidas', 'Higiene'];
+    const categories = ['Todos', 'Coto', 'Día', 'Carrefour'];
     const rewards = Array(6).fill({ discount: '15%', category: 'Alimentos' });
     return (
     <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
@@ -14,12 +16,13 @@ export default function rewards() {
         </div>
         <div className={styles.points}>
           <h4>Puntos disponibles</h4>
-          <p className={styles.pointsValue}>💰 1000</p>
+          <div className='flex items-center justify-center'>
+            <CoinsIcon className={styles.navIcon} />
+            <p className='ml-3 text-2xl font-bold'> 1000</p>
+          </div>
         </div>
-        <div className={styles.searchBar}>
+        <div>
           <SearchBar/>
-          <input type="text" placeholder="Buscador" />
-          <button className={styles.searchButton}>🔍</button>
         </div>
         <div className={styles.categories}>
           {categories.map((category, index) => (

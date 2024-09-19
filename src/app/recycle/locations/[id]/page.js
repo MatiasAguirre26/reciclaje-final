@@ -20,12 +20,12 @@ function ConfirmationPageContent() {
   const handleConfirm = async () => {
     console.log('Materiales seleccionados:', selectedMaterials);
     console.log('Ubicación seleccionada:', selectedLocation);
-    console.log('ID de usuario:', session?.user?.id);
+    console.log('ID de usuario:', session.user.userId);
     if (selectedMaterials.length > 0 && selectedLocation) {
       const data = {
         materials: selectedMaterials,
         location: selectedLocation,
-        userID: session.user.id,
+        userID: session.user.userId,
       };
 
       console.log("Datos a enviar:", data);

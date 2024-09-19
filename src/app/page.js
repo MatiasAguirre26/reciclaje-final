@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image";
 import styles from '@/styles/hero-section.module.css';
 import navbar from '@/styles/navbar-landing.module.css';
