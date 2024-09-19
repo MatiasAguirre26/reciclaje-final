@@ -1,4 +1,7 @@
+'use client';
+
 import Navbar from '@/components/navbar';
+import SearchBar  from "@/components/search-bar";
 import styles from '@/styles/rewards-page.module.css';
 
 export default function rewards() {
@@ -9,15 +12,12 @@ export default function rewards() {
         <div className="mb-8 text-3xl text-center">
           <h1>Recompensas</h1>
         </div>
-        <div className={styles.header}>
-          <button className={styles.closeButton}>✖</button>
-          <h2>Recompensas</h2>
-        </div>
         <div className={styles.points}>
-          <p>Puntos disponibles</p>
+          <h4>Puntos disponibles</h4>
           <p className={styles.pointsValue}>💰 1000</p>
         </div>
         <div className={styles.searchBar}>
+          <SearchBar/>
           <input type="text" placeholder="Buscador" />
           <button className={styles.searchButton}>🔍</button>
         </div>
