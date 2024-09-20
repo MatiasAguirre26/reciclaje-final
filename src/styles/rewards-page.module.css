@@ -14,14 +14,7 @@
     align-items: center;
     margin-bottom: 20px;
   }
-  
-  .closeButton {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-  }
+
   
   .points {
     text-align: center;
@@ -63,15 +56,17 @@
     justify-content: space-around;
     margin-bottom: 20px;
     overflow: overlay;
+
   }
   
   .categoryButton {
     background-color: #333;
     border: none;
     color: #fff;
-    padding: 8px 12px;
+    padding: 0.3em 1em;
     border-radius: 20px;
     cursor: pointer;
+    margin-right: 1em;
   }
   
   .categoryButton:first-child {
@@ -93,7 +88,8 @@
   }
   
   .rewardImage {
-    font-size: 40px;
+    font-size: 1rem;
     margin-bottom: 10px;
+    color: var(--color-primary);
   }
   
