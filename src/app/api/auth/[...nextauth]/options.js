@@ -42,7 +42,8 @@ export const authOptions = {
           ...session, 
           user:{
             ...session.user,
-            userId: token.id
+            userId: token.id,
+            token: token.token
           }
         };
       },
@@ -51,6 +52,7 @@ export const authOptions = {
         console.log('jwt user:', user)
         if (user) {
           token.id = user.userId;
+          token.token= user.token
         }
         return token;
       },

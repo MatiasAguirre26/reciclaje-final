@@ -35,10 +35,12 @@ function ConfirmationPageContent() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${session.user.token}`,
           },
           body: JSON.stringify(data),
+        
         });
-
+        console.log('response:', response)
         if (response.ok) {
           setMessageType('success');
           setMessage('Reciclaje confirmado con éxito. Redirigiendo...');
