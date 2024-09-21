@@ -1,31 +1,78 @@
 'use client';
 
-import { useRouter } from 'next/router';
 import CoinsIcon from '/public/icons/coins.svg';
 import useRewardStore from '@/app/stores/useRewardStore';
 import Link from 'next/link';
 import { buttonVariants } from "@/components/ui/button";
 import TicketIcon from '/public/icons/ticket.svg';
 import { useEffect, useState } from 'react';
+import { useSession } from "next-auth/react";
+
 
 export default function RewardDetails() {
-  const { selectedReward, redeemReward, userPoints } = useRewardStore();
+  const { data: session } = useSession(); // Obtiene la sesión
+  const userId = session?.user?.id; // Asegúrate de que esta propiedad exista
 
+  const { selectedReward, redeemReward, userPoints } = useRewardStore();
   const [redeemed, setRedeemed] = useState(false); // Para mostrar un mensaje de confirmación
 
   if (!selectedReward) {
     return <p>No hay detalles de la recompensa disponibles</p>;
   }
 
-  const handleRedeem = () => {
+  // const handleRedeem = () => {
+  //   if (userPoints >= selectedReward.cost) {
+  //     redeemReward(selectedReward.cost);  // Descuenta los puntos
+  //     setRedeemed(true);  // Muestra el mensaje de confirmación
+  //     console.log("Puntos después del canje:", useRewardStore.getState().userPoints); // Verifica que los puntos se han actualizado
+  //   } else {
+  //     setRedeemed(false);  // En caso de no tener suficientes puntos
+  //   }
+  // };
+
+
+  const handleRedeem = async () => {
     if (userPoints >= selectedReward.cost) {
+      // Lógica para canjear los puntos
       redeemReward(selectedReward.cost);  // Descuenta los puntos
       setRedeemed(true);  // Muestra el mensaje de confirmación
-      console.log("Puntos después del canje:", useRewardStore.getState().userPoints); // Verifica que los puntos se han actualizado
+      
+      const couponValue = selectedReward.cost; // valor del cupón
+      const couponValidity = selectedReward.expiration; // vigencia del cupón
+
+      console.log("Datos a enviar:", {
+        userId,
+        totalPoints: userPoints,
+        couponValue,
+        couponValidity,
+      });
+  
+      // Realiza el fetch
+      const response = await fetch('/api/redeem', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId,
+          totalPoints: userPoints,
+          couponValue,
+          couponValidity,
+        }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Canje exitoso:', data);
+      } else {
+        console.error('Error en el canje:', response.statusText);
+      }
+  
     } else {
       setRedeemed(false);  // En caso de no tener suficientes puntos
     }
   };
+  
 
   return (
     <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
