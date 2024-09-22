@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 
 export default function RewardDetails() {
   const { data: session } = useSession(); // Obtiene la sesión
-  const userId = session?.user?.id; // Asegúrate de que esta propiedad exista
+  const userId = session.user.id; // Asegúrate de que esta propiedad exista
 
   const { selectedReward, redeemReward, userPoints } = useRewardStore();
   const [redeemed, setRedeemed] = useState(false); // Para mostrar un mensaje de confirmación
@@ -75,7 +75,7 @@ export default function RewardDetails() {
   
 
   return (
-    <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
+    <div className="grid gap-6">
       <h1 className='text-3xl text-center'>Detalles de la Recompensa</h1>
       <div className="flex flex-col items-center justify-between p-4 rounded-lg">
         <h4 className='text-xl text-center'>Puntos disponibles</h4>

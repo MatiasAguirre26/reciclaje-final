@@ -89,7 +89,7 @@ export default function RewardsPage() {
     setIsMounted(true);
   }, []);
 
-  const categories = ['Todos', 'Coto', 'Día', 'Carrefour'];
+  const categories = ['Todos', 'Coto', 'Día', 'Carrefour', 'Jumbo'];
   const rewards = [
     { id: 1, discount: '15%', category: 'Alimentos', cost: 200, details: 'Detalles del cupón 1', expiration: '31/12/2024' },
     { id: 2, discount: '20%', category: 'Bebidas', cost: 300, details: 'Detalles del cupón 2', expiration: '30/11/2024' },
@@ -105,7 +105,7 @@ export default function RewardsPage() {
   }
 
   return (
-    <div className="grid justify-center gap-6 mx-8 my-8 text-white">
+    <div className="grid gap-6">
       <div className="mb-8 text-3xl text-center">
         <h1>Recompensas</h1>
       </div>

@@ -43,17 +43,17 @@ export default function Locations() {
     };
 
     return (
-        <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
+        <div className="grid gap-6">
             <div className="mb-3 text-3xl text-center">
                 <h1>Lugares de reciclados</h1>
             </div>
             {/* Mostrar la imagen de la ubicación seleccionada */}
-            <div className="min-w-8">
+            <div className="mb-5">
             {currentLocation && (
                 <img
                     src={currentLocation.imageUrl}
                     alt={`Imagen de ${currentLocation.name}`}
-                    className="object-cover w-full max-w-xs rounded-lg h-60 max-h-64"
+                    className="object-cover w-full rounded-lg h-60 max-h-64"
                 />
             )}
             </div>

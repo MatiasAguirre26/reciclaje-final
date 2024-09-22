@@ -34,7 +34,7 @@ export default function Recycle() {
   };
 
   return (
-    <div className="mx-[30px] grid gap-[20px] text-center justify-center my-8 text-white ">
+    <div className="grid gap-6 text-center ">
       <div>
         <h2 className='mb-8 text-3xl'>Reciclar</h2>
         <p>Selecciona los materiales que vas a reciclar</p>
