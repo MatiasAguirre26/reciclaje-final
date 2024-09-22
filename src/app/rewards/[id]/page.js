@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 
 export default function RewardDetails() {
   const { data: session } = useSession(); // Obtiene la sesión
-  const userId = session.user.id; // Asegúrate de que esta propiedad exista
+  const userId = session.user.userId; // Asegúrate de que esta propiedad exista
 
   const { selectedReward, redeemReward, userPoints } = useRewardStore();
   const [redeemed, setRedeemed] = useState(false); // Para mostrar un mensaje de confirmación
