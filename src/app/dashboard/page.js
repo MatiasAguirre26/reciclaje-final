@@ -3,7 +3,7 @@
 import Navbar from '@/components/navbar';
 import Link from 'next/link';
 import { useSession } from "next-auth/react";
-
+import useRewardStore from '@/app/stores/useRewardStore';
 import MapIcon from '/public/icons/map.svg';
 import RecycleIcon from '/public/icons/recycle.svg';
 import CoinsIcon from '/public/icons/coins.svg';
@@ -13,13 +13,21 @@ import ManualIcon from '/public/icons/manual-icon.svg';
 export default function Dashboard() {
   const { data } = useSession();
   console.log(data);
+  const userPoints = useRewardStore((state) => state.userPoints);
 
   return (
     <div className="container mx-auto max-w-[600px] px-4 grid gap-[20px] justify-center my-8 text-white">
       {/* Header */}
       <header className="my-8 text-center">
         {/* <h1 className="text-4xl font-bold">Hola, </h1> */}
-        <p className="mt-4 text-xl">Puntos disponibles: <span className="font-bold">1000</span></p>
+        {/* <p className="mt-4 text-xl">Puntos disponibles: <span className="font-bold">1000</span></p> */}
+        <div className="flex flex-col items-center justify-between p-4 rounded-lg">
+        <h4 className='text-xl text-center'>Puntos disponibles</h4>
+        <div className="flex items-center">
+          <CoinsIcon className="w-6 h-6 text-[--color-primary]" />
+          <p className="ml-2 text-3xl font-bold">{userPoints}</p>
+        </div>
+      </div>
       </header>
 
       {/* Navigation */}
