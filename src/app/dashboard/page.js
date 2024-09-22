@@ -25,15 +25,15 @@ export default function Dashboard() {
       {/* Navigation */}
       <nav className="flex justify-between">
         <Link href="/recycle" className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
-          <RecycleIcon />
+          <RecycleIcon className="text-[--color-primary]" />
           <span className="mt-2 text-white">Reciclar</span>
         </Link>
         <Link href="/map" className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
-          <MapIcon />
+          <MapIcon className="text-[--color-primary]" />
           <span className="mt-2 text-white">Mapa</span>
         </Link>
         <Link href="/rewards" className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
-          <CoinsIcon />
+          <CoinsIcon className="text-[--color-primary]" />
           <span className="mt-2 text-white">Canjear</span>
         </Link>
       </nav>
