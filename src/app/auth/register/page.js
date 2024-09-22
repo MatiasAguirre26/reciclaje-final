@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from '@/styles/register.module.css';
+import Link from 'next/link';
+
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -52,31 +53,66 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className={styles.registerContainer}>
-      <form onSubmit={handleSubmit} className={styles.registerForm}>
-        <h2>Registrarse</h2>
-        {message && <p className={styles.errorMessage}>{message}</p>}
-        <label>
-          Nombre completo
-          <input type="text" name="name" onChange={handleChange} value={formData.name} required />
-        </label>
-        <label>
-          Nombre de usuario
-          <input type="text" name="username" onChange={handleChange} value={formData.username} required />
-        </label>
-        <label>
-          Correo electrónico
-          <input type="email" name="email" onChange={handleChange} value={formData.email} required />
-        </label>
-        <label>
-          Contraseña
-          <input type="password" name="password" onChange={handleChange} value={formData.password} required />
-        </label>
-        <label>
-          Confirmar contraseña
-          <input type="password" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword} required />
-        </label>
-        <button type="submit">Registrarse</button>
+    <div className="flex items-center justify-center min-h-screen px-4 bg-[--color-background]">
+      <form onSubmit={handleSubmit} className="w-full max-w-md p-8 bg-[--color-secundary] rounded-lg shadow-md">
+        <h2 className="mb-6 text-2xl font-semibold text-center text-white">Registrarse</h2>
+        {message && <p className="mb-4 text-sm text-red-500">{message}</p>}
+        <div className="mb-4">
+          <label className="block mb-2 text-white">Nombre completo</label>
+          <input 
+            type="text" 
+            name="name" 
+            onChange={handleChange} 
+            value={formData.name} 
+            required
+            className="w-full p-2 text-black bg-[--color-white] rounded focus:outline-none focus:ring focus:ring-blue-500"/>
+        </div>
+        <div className="mb-4">
+          <label className="block mb-2 text-white">Nombre de usuario</label>
+          <input 
+            type="text" 
+            name="username" 
+            onChange={handleChange} 
+            value={formData.username} 
+            required
+            className="w-full p-2 text-black bg-[--color-white] rounded focus:outline-none focus:ring focus:ring-blue-500"/>
+        </div>
+        <div className="mb-4">
+          <label className="block mb-2 text-white">Correo electrónico</label>
+          <input 
+            type="email" 
+            name="email" 
+            onChange={handleChange} 
+            value={formData.email} 
+            required
+            className="w-full p-2 text-black bg-[--color-white] rounded focus:outline-none focus:ring focus:ring-blue-500"/>
+        </div>
+        <div className="mb-4">
+          <label className="block mb-2 text-white">Contraseña</label>
+          <input 
+            type="password" 
+            name="password" 
+            onChange={handleChange} 
+            value={formData.password} 
+            required
+            className="w-full p-2 text-black bg-[--color-white] rounded focus:outline-none focus:ring focus:ring-blue-500"/>
+        </div>
+        <div className="mb-4">
+          <label className="block mb-2 text-white">Confirmar contraseña</label>
+          <input 
+            type="password" 
+            name="confirmPassword" 
+            onChange={handleChange} 
+            value={formData.confirmPassword} 
+            required
+            className="w-full p-2 text-black bg-[--color-white] rounded focus:outline-none focus:ring focus:ring-blue-500"/>
+        </div>
+        <button type="submit" className="w-full bg-[--color-primary] py-3 font-bold text-black transition duration-200 rounded-full hover:bg-[--color-secundary]">Registrarse</button>
+        {/* Enlace a la página de login */}
+        <div className="mt-6 text-center">
+          <p className="text-white">¿Ya tiene un cuenta?</p>
+          <Link href="login" className="text-[--color-primary] font-bold hover:underline">Iniciar sesión</Link>
+        </div>
       </form>
     </div>
   );
