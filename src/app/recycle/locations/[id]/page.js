@@ -67,7 +67,7 @@ function ConfirmationPageContent() {
   };
 
   return (
-    <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
+    <div className="grid gap-6">
       <div className="mb-8 text-3xl text-center">
         <h1>Confirmar Reciclaje</h1>
       </div>

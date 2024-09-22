@@ -22,10 +22,10 @@ export default function Locations() {
 
     // Definir ubicaciones con dirección, horarios, e imagenes
     const locations = [
-      { value: "location1", name: "Calle Falsa 123, Ciudad A", address: "Calle Falsa 123", hours: "9am - 5pm", imageUrl: "/assets/location1.jpg" },
-      { value: "location2", name: "Avenida Siempreviva 742, Ciudad B", address: "Avenida Siempreviva 742", hours: "10am - 6pm", imageUrl: "/assets/location2.jpg" },
-      { value: "location3", name: "Plaza Central, Ciudad C", address: "Plaza Central", hours: "8am - 4pm", imageUrl: "/assets/location3.jpg" },
-      { value: "location4", name: "Barrio Verde, Ciudad D", address: "Barrio Verde", hours: "11am - 7pm", imageUrl: "/assets/location4.jpg" },
+      { value: "location1", name: "Punto Rojo, Ciudad A", address: "Labruna 91218", hours: "9am - 5pm", imageUrl: "/assets/location1.jpg" },
+      { value: "location2", name: "Centro Comunal , 13", address: "Avenida Siempreviva 742", hours: "10am - 6pm", imageUrl: "/assets/location2.jpg" },
+      { value: "location3", name: "Plaza Central, Ciudad C", address: "Nazca 789", hours: "8am - 4pm", imageUrl: "/assets/location3.jpg" },
+      { value: "location4", name: "Barrio Verde, Ciudad D", address: "Avenida Lacroze 1895", hours: "11am - 7pm", imageUrl: "/assets/location4.jpg" },
     ];
 
     // Usar useEffect para seleccionar una ubicación por defecto cuando se monta el componente
@@ -43,17 +43,17 @@ export default function Locations() {
     };
 
     return (
-        <div className="mx-[30px] grid gap-[20px] justify-center my-8 text-white">
+        <div className="grid gap-6">
             <div className="mb-3 text-3xl text-center">
                 <h1>Lugares de reciclados</h1>
             </div>
             {/* Mostrar la imagen de la ubicación seleccionada */}
-            <div className="min-w-8">
+            <div className="mb-5">
             {currentLocation && (
                 <img
                     src={currentLocation.imageUrl}
                     alt={`Imagen de ${currentLocation.name}`}
-                    className="object-cover w-full max-w-xs rounded-lg h-60 max-h-64"
+                    className="object-cover w-full rounded-lg h-60 max-h-64"
                 />
             )}
             </div>
