@@ -9,16 +9,29 @@ import RecycleIcon from '/public/icons/recycle.svg';
 import CoinsIcon from '/public/icons/coins.svg';
 import TicketIcon from '/public/icons/ticket.svg';
 import ManualIcon from '/public/icons/manual-icon.svg';
+import { buttonVariants } from "@/components/ui/button"; 
+import { UserIcon } from '@heroicons/react/24/outline';
 
 export default function Dashboard() {
-  const { data } = useSession();
-  console.log(data);
+  const { status } = useSession();
   const userPoints = useRewardStore((state) => state.userPoints);
+
+  if (status === 'loading') {
+    return <p>Cargando...</p>;  // Renderizar mientras se carga la sesión
+  }
 
   return (
     <div className="container mx-auto max-w-[600px] px-4 grid gap-[20px] justify-center my-8 text-white">
       {/* Header */}
       <header className="my-8 text-center">
+      {/* Profile Button */}
+      <div className="flex mb-6">
+        <Link href="profile" className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })}>
+          <UserIcon className="w-6 h-6 text-[--color-background] mr-2" />
+          Perfil
+        </Link>
+      </div>
+
         {/* <h1 className="text-4xl font-bold">Hola, </h1> */}
         {/* <p className="mt-4 text-xl">Puntos disponibles: <span className="font-bold">1000</span></p> */}
         <div className="flex flex-col items-center justify-between p-4 rounded-lg">
@@ -28,6 +41,9 @@ export default function Dashboard() {
           <p className="ml-2 text-3xl font-bold">{userPoints}</p>
         </div>
       </div>
+
+
+
       </header>
 
       {/* Navigation */}

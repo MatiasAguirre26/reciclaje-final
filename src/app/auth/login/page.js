@@ -2,7 +2,7 @@
 import { signIn, SessionProvider } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import styles from '@/styles/login.module.css';
+import Link from 'next/link';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -28,19 +28,37 @@ function LoginPage() {
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <form onSubmit={handleSubmit} className={styles.loginForm}>
-        <h2>Iniciar sesión</h2>
-        {error && <p className={styles.errorMessage}>{error}</p>}
-        <label>
-          Correo electrónico
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Contraseña
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </label>
-        <button type="submit">Iniciar sesión</button>
+    <div className="flex items-center justify-center min-h-screen px-4 bg-[--background-color]">
+      <form onSubmit={handleSubmit} className="w-full max-w-md p-8 bg-[--color-secundary] rounded-lg shadow-md">
+        <h2 className="mb-6 text-2xl font-semibold text-center text-white">Iniciar sesión</h2>
+        {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
+        <div className="mb-4">
+          <label className="block mb-2 text-white">Correo electrónico</label>
+            <input 
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required
+              className="w-full p-2 text-black bg-[--color-white] rounded focus:outline-none focus:ring focus:ring-blue-500"
+            />
+        </div>
+
+        <div className="mb-6">
+          <label className="block mb-2 text-white">Contraseña</label>
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required
+            className="w-full p-2 text-black bg-[--color-white] rounded focus:outline-none focus:ring focus:ring-blue-500"
+          />
+        </div>
+        <button type="submit" className="w-full bg-[--color-primary] py-3 font-bold text-black transition duration-200 rounded-full hover:bg-[--color-secundary]">Iniciar sesión</button>
+        {/* Enlace a la página de registro */}
+        <div className="mt-6 text-center">
+          <p className="text-white">¿No tienes cuenta?</p>
+          <Link href="register" className="text-[--color-primary] font-bold hover:underline">Registrarse</Link>
+        </div>
       </form>
     </div>
   );
