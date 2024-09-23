@@ -38,25 +38,25 @@ export default function MapComponent() {
       const locations = [
         {
           coords: [-34.6037, -58.3816],
-          name: 'Zona de Reciclaje 1',
-          address: 'Plaza de Mayo, Buenos Aires',
+          name: 'Punto verde de 9 de Julio',
+          address: '9 de Julio, Buenos Aires',
           hours: 'Lunes a Viernes: 9:00 AM - 6:00 PM',
         },
         {
           coords: [-34.6158, -58.4333],
-          name: 'Zona de Reciclaje 2',
-          address: 'Parque Centenario, Buenos Aires',
+          name: 'Punto verde de Parque Rivadavia',
+          address: 'Parque Rivadavia, Buenos Aires',
           hours: 'Todos los días: 8:00 AM - 8:00 PM',
         },
         {
           coords: [-34.6272, -58.3644],
-          name: 'Zona de Reciclaje 3',
-          address: 'Barracas, Buenos Aires',
+          name: 'Punto verde de La Boca',
+          address: 'La Boca, Buenos Aires',
           hours: 'Lunes a Sábado: 10:00 AM - 5:00 PM',
         },
         {
           coords: [-34.5904, -58.3820],
-          name: 'Zona de Reciclaje 4',
+          name: 'Punto verde de Recoleta',
           address: 'Recoleta, Buenos Aires',
           hours: 'Todos los días: 9:00 AM - 7:00 PM',
         }

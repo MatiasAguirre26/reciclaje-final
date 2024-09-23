@@ -22,10 +22,10 @@ export default function Locations() {
 
     // Definir ubicaciones con dirección, horarios, e imagenes
     const locations = [
-      { value: "location1", name: "Punto Rojo, Ciudad A", address: "Labruna 91218", hours: "9am - 5pm", imageUrl: "/assets/location1.jpg" },
-      { value: "location2", name: "Centro Comunal , 13", address: "Avenida Siempreviva 742", hours: "10am - 6pm", imageUrl: "/assets/location2.jpg" },
-      { value: "location3", name: "Plaza Central, Ciudad C", address: "Nazca 789", hours: "8am - 4pm", imageUrl: "/assets/location3.jpg" },
-      { value: "location4", name: "Barrio Verde, Ciudad D", address: "Avenida Lacroze 1895", hours: "11am - 7pm", imageUrl: "/assets/location4.jpg" },
+      { value: "location1", name: "Punto verde de 9 de Julio", address: "9 de Julio, Buenos Aires", hours: "Lunes a Viernes: 9:00 AM - 6:00 PM", imageUrl: "/assets/location1.jpg" },
+      { value: "location2", name: "Punto verde de Parque Rivadavia", address: "Parque Rivadavia, Buenos Aires", hours: "Todos los días: 8:00 AM - 8:00 PM", imageUrl: "/assets/location2.jpg" },
+      { value: "location3", name: "Punto verde de La Boca", address: "La Boca, Buenos Aires", hours: "Lunes a Sábado: 10:00 AM - 5:00 PM", imageUrl: "/assets/location3.jpg" },
+      { value: "location4", name: "Punto verde de Recoleta", address: "Recoleta, Buenos Aires", hours: "Todos los días: 9:00 AM - 7:00 PM", imageUrl: "/assets/location4.jpg" },
     ];
 
     // Usar useEffect para seleccionar una ubicación por defecto cuando se monta el componente
