@@ -34,19 +34,46 @@ export default function MapComponent() {
      iconSize: [24, 24]
    });
 
-        // Agregar los 4 puntos (zonas de reciclaje)
-        const locations = [
-        { coords: [-34.6037, -58.3816], popup: 'Zona de Reciclaje 1' }, // Plaza de Mayo
-        { coords: [-34.6158, -58.4333], popup: 'Zona de Reciclaje 2' }, // Parque Centenario
-        { coords: [-34.6272, -58.3644], popup: 'Zona de Reciclaje 3' }, // Barracas
-        { coords: [-34.5904, -58.3820], popup: 'Zona de Reciclaje 4' }  // Recoleta
-        ];
+      // Información de las locaciones
+      const locations = [
+        {
+          coords: [-34.6037, -58.3816],
+          name: 'Zona de Reciclaje 1',
+          address: 'Plaza de Mayo, Buenos Aires',
+          hours: 'Lunes a Viernes: 9:00 AM - 6:00 PM',
+        },
+        {
+          coords: [-34.6158, -58.4333],
+          name: 'Zona de Reciclaje 2',
+          address: 'Parque Centenario, Buenos Aires',
+          hours: 'Todos los días: 8:00 AM - 8:00 PM',
+        },
+        {
+          coords: [-34.6272, -58.3644],
+          name: 'Zona de Reciclaje 3',
+          address: 'Barracas, Buenos Aires',
+          hours: 'Lunes a Sábado: 10:00 AM - 5:00 PM',
+        },
+        {
+          coords: [-34.5904, -58.3820],
+          name: 'Zona de Reciclaje 4',
+          address: 'Recoleta, Buenos Aires',
+          hours: 'Todos los días: 9:00 AM - 7:00 PM',
+        }
+      ];
 
         // Añadir marcadores
         locations.forEach((location) => {
+            const popupContent = `
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-green-700">${location.name}</h3>
+              <p class="text-sm text-gray-700">Dirección: ${location.address}</p>
+              <p class="text-sm text-gray-700">Horario: ${location.hours}</p>
+            </div>
+          `;
             L.marker(location.coords, { icon: customIcon })
                 .addTo(map)
-                .bindPopup(location.popup)
+                .bindPopup(popupContent)
                 .openPopup();
             });
     }
