@@ -53,7 +53,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-4 bg-[--color-background]">
+    <div className="flex items-center justify-center min-h-screen px-4 bg-[--background-color]">
       <form onSubmit={handleSubmit} className="w-full max-w-md p-8 bg-[--color-secundary] rounded-lg shadow-md">
         <h2 className="mb-6 text-2xl font-semibold text-center text-white">Registrarse</h2>
         {message && <p className="mb-4 text-sm text-red-500">{message}</p>}
