@@ -11,10 +11,21 @@ import TicketIcon from '/public/icons/ticket.svg';
 import ManualIcon from '/public/icons/manual-icon.svg';
 import { buttonVariants } from "@/components/ui/button"; 
 import { UserIcon } from '@heroicons/react/24/outline';
+import { useEffect } from 'react';
 
 export default function Dashboard() {
   const { status } = useSession();
   const userPoints = useRewardStore((state) => state.userPoints);
+
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session) {
+      console.log('El usuario logueado tiene el rol:', session.user.role);
+    }
+  }, [session]);
+
+
 
   if (status === 'loading') {
     return <p>Cargando...</p>;  // Renderizar mientras se carga la sesión

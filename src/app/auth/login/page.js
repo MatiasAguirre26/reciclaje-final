@@ -1,14 +1,30 @@
 'use client'
-import { signIn, SessionProvider } from 'next-auth/react';
+import { signIn, SessionProvider, useSession  } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getSession } from 'next-auth/react';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter(); 
+  const { data: session } = useSession(); // Obtener la sesión actual
+
+  // useEffect(() => {
+  //   // Si el usuario ya ha iniciado sesión, redirigir según el rol
+  //   if (session) {
+  //     if (session.user.role === 'admin') {
+  //       router.push('/admin');
+  //     } else {
+  //       router.push('/dashboard');
+  //     }
+  //   }
+  // }, [session, router]);
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,9 +38,17 @@ function LoginPage() {
     if (res.error) {
       setError(res.error);
     } else {
-      // Redirigir al usuario a la página de inicio u otra ruta deseada
-      router.push('/dashboard');
+      // Aquí debes obtener el rol desde la sesión
+      const session = await getSession(); 
+      const userRole = session.user.role || 'user'; 
+  
+      if (userRole === 'admin') {
+        router.push('/admin');
+      } else {
+        router.push('/dashboard');
+      }
     }
+
   };
 
   return (

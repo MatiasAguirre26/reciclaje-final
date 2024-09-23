@@ -35,6 +35,7 @@ export const authOptions = {
       async session({ session, token }) {
         console.log('session session:', session)
         console.log('session token:', token)
+        console.log('El usuario tiene el rol:', token.role)
         // if (token?.id) {
         //   session.user.id = token.id;
         // }
@@ -43,16 +44,20 @@ export const authOptions = {
           user:{
             ...session.user,
             userId: token.id,
-            token: token.token
+            token: token.token,
+            role: token.role,
           }
         };
       },
       async jwt({ token, user }) {
         console.log('jwt token:', token)
         console.log('jwt user:', user)
+        console.log('jwt role:', user.role)
         if (user) {
+          console.log('Usuario autenticado con rol:', user.role)
           token.id = user.userId;
           token.token= user.token
+          token.role = user.role; 
         }
         return token;
       },
