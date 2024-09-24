@@ -6,6 +6,9 @@ import Navbar from '@/components/navbar';
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import useRecycleStore from "@/app/stores/useRecycleStore"; // Importar la store
+import ChatComponent from './chatbot/chatbot';
+
+
 
 // Iconos
 import MetalIcon from '/public/icons/metal.svg';
@@ -24,6 +27,11 @@ const materialsList = [
 
 export default function Recycle() {
   const { selectedMaterials, setSelectedMaterials } = useRecycleStore(); // Usar Zustand
+  const [isChatOpen, SetChatOpen] = useState(false);
+
+  const toggleChat = () => {
+    SetChatOpen(!isChatOpen);
+  };
 
   const handleSelectMaterial = (material) => {
     if (selectedMaterials.includes(material)) {
@@ -57,6 +65,13 @@ export default function Recycle() {
         <Link href="recycle/locations" className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })}>Siguiente</Link>
       </div>
       <div>
+         {/* Icono flotante */}
+      <button className={styles.floatingIcon} onClick={toggleChat}>
+      </button> 
+
+       {/* Mostrar el componente de chatbot */}
+       {isChatOpen && <ChatComponent onClose={toggleChat} />}
+
         <Navbar />
       </div>
     </div>
