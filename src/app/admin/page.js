@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -22,6 +24,8 @@ const POINTS_PER_KILO = {
 export default function AdminPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [userEmail, setUserEmail] = useState('')
+  const [userId, setUserId] = useState(null)
+  const [message, setMessage] = useState('')
   const [weights, setWeights] = useState({
     cardboard: '',
     glass: '',
@@ -30,15 +34,57 @@ export default function AdminPage() {
     plastic: ''
   })
 
-  const handleSearch = (e) => {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (status === 'loading') return // Do nothing while loading
+    if (!session || session.user.role !== 'admin') {
+      router.push('/dashboard')
+    }
+  }, [session, status, router])
+
+  if (status === 'loading') {
+    return <div>Cargando...</div>
+  }
+
+  if (!session || session.user.role !== 'admin') {
+    return null
+  }
+
+  const handleSearch = async (e) => {
     e.preventDefault()
-    console.log('Buscando usuario:', searchQuery)
-    setUserEmail(searchQuery)
+    try {
+      const response = await fetch('/api/admin/search-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.user.token}`
+        },
+        body: JSON.stringify({ email: searchQuery })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setUserEmail(data.user.email)
+        setUserId(data.user.id)
+        setMessage('')
+      } else {
+        setMessage(data.message || 'Error al buscar usuario')
+        setUserEmail('')
+        setUserId(null)
+      }
+    } catch (error) {
+      setMessage('Error de conexión')
+      setUserEmail('')
+      setUserId(null)
+    }
+
     setSearchQuery('')
   }
 
   const handleWeightChange = (material, value) => {
-    // Permitir solo números positivos y decimales
     if (/^\d*\.?\d*$/.test(value) || value === '') {
       setWeights(prevWeights => ({
         ...prevWeights,
@@ -52,7 +98,51 @@ export default function AdminPage() {
       const weightValue = parseFloat(weight) || 0
       return total + (weightValue * POINTS_PER_KILO[material])
     }, 0)
-    return Math.ceil(totalPoints) // Redondear hacia arriba
+    return Math.ceil(totalPoints)
+  }
+
+  const handleSubmit = async () => {
+    if (!userId) {
+      setMessage('Por favor, busca un usuario primero')
+      return
+    }
+
+    const totalPoints = calculatePoints()
+    const validWeights = Object.fromEntries(
+      Object.entries(weights).filter(([_, weight]) => !isNaN(parseFloat(weight)) && parseFloat(weight) > 0)
+    )
+
+    try {
+      const response = await fetch('/api/admin/add-points', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.user.token}`
+        },
+        body: JSON.stringify({
+          userId,
+          points: totalPoints,
+          weights: validWeights
+        })
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setMessage('Puntos agregados exitosamente')
+        setWeights({
+          cardboard: '',
+          glass: '',
+          paper: '',
+          metal: '',
+          plastic: ''
+        })
+      } else {
+        setMessage(data.message || 'Error al agregar puntos')
+      }
+    } catch (error) {
+      setMessage('Error de conexión')
+    }
   }
 
   const materials = [
@@ -79,6 +169,8 @@ export default function AdminPage() {
           <Button type="submit">Buscar</Button>
         </div>
       </form>
+
+      {message && <p className="mb-4 text-yellow-400">{message}</p>}
 
       {userEmail && <p className="mb-4">Usuario seleccionado: {userEmail}</p>}
 
@@ -117,7 +209,7 @@ export default function AdminPage() {
           </CardContent>
         </Card>
 
-        <Button className="w-full mt-4 font-bold">Enviar</Button>
+        <Button className="w-full mt-4 font-bold" onClick={handleSubmit}>Enviar</Button>
       </div>
     </div>
   )
