@@ -64,13 +64,13 @@ export default function Dashboard() {
 
 
       {/* Manual Section */}
-      <section className="flex my-12 text-center bg-[--color-secundary] rounded-lg p-3">
+      <Link href="/manual" className="flex my-12 text-center bg-[--color-secundary] rounded-lg p-3">
         <ManualIcon className="w-24 h-24 text-[--color-primary]"/>
         <div className='flex flex-col justify-center'>
           <h2 className="text-2xl font-semibold">Manual de reciclaje</h2>
           <p className="mt-4 text-lg">Aprende la manera correcta de reciclar tus materiales</p>          
         </div>
-      </section>
+      </Link>
 
       {/* Coupons Section */}
       <section className="my-12">
