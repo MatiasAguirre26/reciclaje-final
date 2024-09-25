@@ -20,17 +20,6 @@ export default function RewardDetails() {
     return <p>No hay detalles de la recompensa disponibles</p>;
   }
 
-  // const handleRedeem = () => {
-  //   if (userPoints >= selectedReward.cost) {
-  //     redeemReward(selectedReward.cost);  // Descuenta los puntos
-  //     setRedeemed(true);  // Muestra el mensaje de confirmación
-  //     console.log("Puntos después del canje:", useRewardStore.getState().userPoints); // Verifica que los puntos se han actualizado
-  //   } else {
-  //     setRedeemed(false);  // En caso de no tener suficientes puntos
-  //   }
-  // };
-
-
   const handleRedeem = async () => {
     if (userPoints >= selectedReward.cost) {
       // Lógica para canjear los puntos
@@ -72,6 +61,7 @@ export default function RewardDetails() {
       setRedeemed(false);  // En caso de no tener suficientes puntos
     }
   };
+  
   
 
   return (
