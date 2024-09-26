@@ -155,7 +155,8 @@ export default function AdminPage() {
 
   return (
     <div className="container mx-auto max-w-[600px] px-4 my-8 text-white min-h-screen">
-      <h1 className="mb-4 text-2xl">Ingrese el correo del usuario para ingresar puntos</h1>
+      <h1 className="mb-4 text-3xl font-bold text-center">Administrador de puntos</h1>
+      <h1 className="mb-4 text-1xl">Ingrese el correo del usuario para ingresar puntos</h1>
       
       <form onSubmit={handleSearch} className="mb-6">
         <div className="flex gap-2">
