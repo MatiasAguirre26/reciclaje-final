@@ -155,11 +155,11 @@ export default function AdminPage() {
   ]
 
   return (
-    <div className="container mx-auto max-w-[600px] px-4 my-8 text-white min-h-screen">
+    <div className="container mx-auto max-w-[600px] px-4 my-8 grid gap-4 text-white min-h-screen">
       <h1 className="mb-4 text-3xl font-bold text-center">Administrador de puntos</h1>
-      <h1 className="mb-4 text-1xl">Ingrese el correo del usuario para ingresar puntos</h1>
       
-      <form onSubmit={handleSearch} className="mb-6">
+      <form onSubmit={handleSearch} className="mt-6">
+        <h1 className="mb-4 text-1xl">Ingrese el correo del usuario para ingresar puntos</h1>
         <div className="flex gap-2">
           <Input 
             type="text" 
@@ -176,7 +176,7 @@ export default function AdminPage() {
 
       {userEmail && <p className="mb-4">Usuario seleccionado: {userEmail}</p>}
 
-      <div className="grid mt-6 gap-9">
+      <div className="grid mt-8 gap-9">
         {materials.map((material, index) => (
           <div key={index} className="flex justify-between">
             <material.icon className="w-10 h-10 text-[--color-primary]" />
