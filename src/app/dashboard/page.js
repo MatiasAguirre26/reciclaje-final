@@ -35,7 +35,7 @@ export default function Dashboard() {
         {/* <h1 className="text-4xl font-bold">Hola, </h1> */}
         {/* <p className="mt-4 text-xl">Puntos disponibles: <span className="font-bold">1000</span></p> */}
         <div className="flex flex-col items-center justify-between p-4 rounded-lg">
-        <h4 className='text-xl text-center'>Puntos disponibles</h4>
+        <h4 className='text-xl font-semibold text-center'>Puntos disponibles</h4>
         <div className="flex items-center">
           <CoinsIcon className="w-6 h-6 text-[--color-primary]" />
           <p className="ml-2 text-3xl font-bold">{userPoints}</p>

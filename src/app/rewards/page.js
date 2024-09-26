@@ -107,10 +107,10 @@ export default function RewardsPage() {
   return (
     <div className="grid gap-6">
       <div className="mb-8 text-3xl text-center">
-        <h1>Recompensas</h1>
+        <h1 className='font-bold'>Recompensas</h1>
       </div>
       <div className="flex flex-col items-center justify-between p-4 rounded-lg">
-        <h4 className='text-xl text-center'>Puntos disponibles</h4>
+        <h4 className='text-xl font-semibold text-center'>Puntos disponibles</h4>
         <div className="flex items-center">
           <CoinsIcon className="w-6 h-6 text-[--color-primary]" />
           <p className="ml-2 text-3xl font-bold">{userPoints}</p>

@@ -69,7 +69,7 @@ function ConfirmationPageContent() {
   return (
     <div className="grid gap-6">
       <div className="mb-8 text-3xl text-center">
-        <h1>Confirmar Reciclaje</h1>
+        <h1 className="font-bold">Confirmar Reciclaje</h1>
       </div>
       {/* Mostrar mensaje condicionalmente */}
       {message && (

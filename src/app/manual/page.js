@@ -1,5 +1,15 @@
 import React from "react";
-import { Button } from "@/components/ui/button"; // Asegúrate de que la ruta sea la correcta según tu proyecto
+import { Button } from "@/components/ui/button";
+import Link from "next/link"; // Asegúrate de que la ruta sea la correcta según tu proyecto
+
+// Iconos
+import MetalIcon from '/public/icons/metal.svg';
+import GlassIcon from '/public/icons/glass.svg';
+import PaperIcon from '/public/icons/paper.svg';
+import BoxIcon from '/public/icons/box.svg';
+import PlasticIcon from '/public/icons/plastic.svg';
+
+
 
 export default function Manual() {
   return (
@@ -17,24 +27,29 @@ export default function Manual() {
 
       {/* Sección: Materiales reciclables */}
       <section className="mb-6">
-        <h2 className="mb-4 text-2xl font-semibold">Materiales reciclables</h2>
-        <ul className="text-gray-700 list-disc list-inside">
-          <li>
-            <strong>Plástico:</strong> Separa los plásticos PET, HDPE y otros.
-          </li>
-          <li>
-            <strong>Papel y cartón:</strong> Evita reciclar papel sucio o con grasa.
-          </li>
-          <li>
-            <strong>Vidrio:</strong> Vidrio de botellas y frascos, evita mezclar colores.
-          </li>
-          <li>
-            <strong>Metal:</strong> Latas de aluminio y otros metales.
-          </li>
-          <li>
-            <strong>Orgánicos:</strong> Usa los residuos orgánicos para compostaje.
-          </li>
-        </ul>
+        <h2 className="mb-4 text-2xl font-bold">Materiales reciclables</h2>
+        <div className="flex justify-between">
+          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
+            <MetalIcon className="text-[--color-primary]" />
+            <span className="mt-2 text-white">Metales</span>
+          </div>
+          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
+            <GlassIcon className="text-[--color-primary]" />
+            <span className="mt-2 text-white">Vidrio</span>
+          </div>
+          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
+            <PaperIcon className="text-[--color-primary]" />
+            <span className="mt-2 text-white">Papeles</span>
+          </div>
+          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
+            <PaperIcon className="text-[--color-primary]" />
+            <span className="mt-2 text-white">Papeles</span>
+          </div>
+          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
+            <PaperIcon className="text-[--color-primary]" />
+            <span className="mt-2 text-white">Papeles</span>
+          </div>
+      </div>
       </section>
 
       {/* Sección: Cómo clasificar los residuos */}
@@ -60,13 +75,6 @@ export default function Manual() {
           <li>Reciclar papel o cartón sucio o grasoso.</li>
         </ul>
       </section>
-
-      {/* Botones de navegación */}
-      <div className="flex justify-center mt-8 space-x-4">
-        <Button className="px-4 py-2">Guía de reciclaje</Button>
-        <Button className="px-4 py-2">Lista de zonas de reciclaje</Button>
-        <Button className="px-4 py-2">Ver recompensas</Button>
-      </div>
     </div>
   );
 }

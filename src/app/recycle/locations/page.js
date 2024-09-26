@@ -45,7 +45,7 @@ export default function Locations() {
     return (
         <div className="grid gap-6">
             <div className="mb-3 text-3xl text-center">
-                <h1>Lugares de reciclados</h1>
+                <h1 className="font-bold">Lugares de reciclados</h1>
             </div>
             {/* Mostrar la imagen de la ubicación seleccionada */}
             <div className="mb-5">

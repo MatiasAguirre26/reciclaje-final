@@ -66,7 +66,7 @@ export default function RewardDetails() {
 
   return (
     <div className="grid gap-6">
-      <h1 className='text-3xl text-center'>Detalles de la Recompensa</h1>
+      <h1 className='text-3xl font-bold text-center'>Detalles de la Recompensa</h1>
       <div className="flex flex-col items-center justify-between p-4 rounded-lg">
         <h4 className='text-xl text-center'>Puntos disponibles</h4>
         <div className="flex items-center">
