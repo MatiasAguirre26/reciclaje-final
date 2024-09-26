@@ -12,6 +12,7 @@ import GlassIcon from '/public/icons/glass.svg'
 import PaperIcon from '/public/icons/paper.svg'
 import BoxIcon from '/public/icons/box.svg'
 import PlasticIcon from '/public/icons/plastic.svg'
+import Link from 'next/link'
 
 const POINTS_PER_KILO = {
   cardboard: 10,
@@ -211,6 +212,9 @@ export default function AdminPage() {
         </Card>
 
         <Button className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })} onClick={handleSubmit}>Enviar</Button>
+
+        <Link href="../" className={buttonVariants({ variant: "primary", size: "lg", className: "font-bold bg-red-600 mt-8" })}>
+          Cerrar sesión</Link>
       </div>
     </div>
   )
