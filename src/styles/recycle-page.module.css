@@ -69,3 +69,23 @@
   .selectItem {
     color: var(--color-white);
   }
+
+  .floatingIcon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4caf50; /* Color del icono */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px; /* Tamaño del icono */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+  }
+  
+  .floatingIcon:hover {
+    background-color: #45a049; /* Color al pasar el ratón */
+  }
