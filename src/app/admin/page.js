@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 
@@ -12,6 +12,7 @@ import GlassIcon from '/public/icons/glass.svg'
 import PaperIcon from '/public/icons/paper.svg'
 import BoxIcon from '/public/icons/box.svg'
 import PlasticIcon from '/public/icons/plastic.svg'
+import Link from 'next/link'
 
 const POINTS_PER_KILO = {
   cardboard: 10,
@@ -154,19 +155,20 @@ export default function AdminPage() {
   ]
 
   return (
-    <div className="container mx-auto max-w-[600px] px-4 my-8 text-white bg-gray-900 min-h-screen">
-      <h1 className="mb-4 text-2xl">Ingrese el correo del usuario para ingresar puntos</h1>
+    <div className="container mx-auto max-w-[600px] px-4 my-8 grid gap-4 text-white min-h-screen">
+      <h1 className="mb-4 text-3xl font-bold text-center">Administrador de puntos</h1>
       
-      <form onSubmit={handleSearch} className="mb-6">
+      <form onSubmit={handleSearch} className="mt-6">
+        <h1 className="mb-4 text-1xl">Ingrese el correo del usuario para ingresar puntos</h1>
         <div className="flex gap-2">
           <Input 
             type="text" 
             placeholder="Buscar usuario..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-grow"
+            className="flex-grow bg-[--color-secundary] text-white rounded-lg"
           />
-          <Button type="submit">Buscar</Button>
+          <Button type="submit" className="font-bold rounded-lg">Buscar</Button>
         </div>
       </form>
 
@@ -174,18 +176,18 @@ export default function AdminPage() {
 
       {userEmail && <p className="mb-4">Usuario seleccionado: {userEmail}</p>}
 
-      <div className="mt-6 space-y-4">
+      <div className="grid mt-8 gap-9">
         {materials.map((material, index) => (
-          <div key={index} className="flex items-center justify-between space-x-3">
-            <material.icon className="w-6 h-6 text-[--color-primary]" />
+          <div key={index} className="flex justify-between">
+            <material.icon className="w-10 h-10 text-[--color-primary]" />
             <label htmlFor={`option-${index + 1}`} className="text-lg">{material.label}</label>
             <div className="flex flex-col items-end">
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center">
                 <Input
                   type="text"
                   id={`option-${index + 1}`}
                   placeholder="Peso (kg)"
-                  className="w-[120px] bg-gray-800"
+                  className="w-[120px] bg-[--color-secundary] text-white rounded-lg pb-2 mr-5" 
                   value={weights[material.key]}
                   onChange={(e) => handleWeightChange(material.key, e.target.value)}
                 />
@@ -193,14 +195,14 @@ export default function AdminPage() {
                   ({POINTS_PER_KILO[material.key]} pts/kg)
                 </span>
               </div>
-              <span className="text-xs text-gray-400">
+              <span className="mt-3 text-xs text-gray-400">
                 {weights[material.key] ? `${(parseFloat(weights[material.key]) * 1000).toFixed(0)} gramos` : ''}
               </span>
             </div>
           </div>
         ))}
 
-        <Card className="mt-6 bg-gray-800 border-gray-700">
+        <Card className="mt-6 bg-[--color-secundary] text-white rounded-lg">
           <CardHeader>
             <CardTitle className="text-lg text-center">Puntos que recibirá</CardTitle>
           </CardHeader>
@@ -209,7 +211,10 @@ export default function AdminPage() {
           </CardContent>
         </Card>
 
-        <Button className="w-full mt-4 font-bold" onClick={handleSubmit}>Enviar</Button>
+        <Button className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })} onClick={handleSubmit}>Enviar</Button>
+
+        <Link href="../" className={buttonVariants({ variant: "primary", size: "lg", className: "font-bold bg-red-600 mt-8" })}>
+          Cerrar sesión</Link>
       </div>
     </div>
   )
