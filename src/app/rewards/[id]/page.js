@@ -10,65 +10,59 @@ import TicketIcon from '/public/icons/ticket.svg';
 import { useState } from 'react';
 import { useSession } from "next-auth/react";
 
+function generateRandomCode() {
+  return Math.random().toString(36).substring(2, 10).toUpperCase();
+}
+
 export default function RewardDetails({ params }) {
   const router = useRouter();
   const { data: session } = useSession();
   const userId = session?.user?.userId;
 
-  const { selectedReward, redeemReward, userPoints, setSelectedReward } = useRewardStore();
+  const { selectedReward, redeemReward, userPoints, setSelectedReward, addRedeemedReward } = useRewardStore();
   const [redeemed, setRedeemed] = useState(false);
 
   useEffect(() => {
     if (!selectedReward) {
-      // Si no hay recompensa seleccionada, redirigir a la página de recompensas
       router.push('/rewards');
     }
   }, [selectedReward, router]);
 
   if (!selectedReward) {
-    return null; // O puedes mostrar un loader aquí
+    return null;
   }
 
   const handleRedeem = async () => {
     if (userPoints >= selectedReward.cost) {
-      redeemReward(selectedReward.cost);
-      setRedeemed(true);
-      
-      const couponValue = selectedReward.cost;
-      const couponValidity = selectedReward.expiration;
-
-      console.log("Datos a enviar:", {
-        userId,
-        totalPoints: userPoints,
-        couponValue,
-        couponValidity,
-      });
-  
       try {
-        const response = await fetch('/api/redeem', {
+        const response = await fetch('/api/coupons/redeem', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session.accessToken}`,
           },
           body: JSON.stringify({
-            userId,
-            totalPoints: userPoints,
-            couponValue,
-            couponValidity,
+            couponId: selectedReward.id,
+            cost: selectedReward.cost,
           }),
         });
   
         if (response.ok) {
           const data = await response.json();
           console.log('Canje exitoso:', data);
+          updateAfterRedemption(data.updatedPoints, data.redeemedCoupon);
+          router.push('/dashboard');
         } else {
-          console.error('Error en el canje:', response.statusText);
+          const errorData = await response.json();
+          console.error('Error en el canje:', errorData);
+          alert(errorData.message || 'Error al canjear el cupón. Por favor, intenta de nuevo.');
         }
       } catch (error) {
         console.error('Error al realizar el canje:', error);
+        alert('Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.');
       }
     } else {
-      setRedeemed(false);
+      alert('No tienes suficientes puntos para canjear esta recompensa.');
     }
   };
 

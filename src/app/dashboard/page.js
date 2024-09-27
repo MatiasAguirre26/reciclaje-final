@@ -14,39 +14,34 @@ import { UserIcon } from '@heroicons/react/24/outline';
 
 export default function Dashboard() {
   const { status } = useSession();
-  const userPoints = useRewardStore((state) => state.userPoints);
+  const { userPoints, redeemedRewards } = useRewardStore();
 
   if (status === 'loading') {
-    return <p>Cargando...</p>;  // Renderizar mientras se carga la sesión
+    return <p>Cargando...</p>;
   }
 
   return (
     <div className="container mx-auto max-w-[600px] px-4 grid gap-[20px] justify-center my-8 text-white">
       {/* Header */}
       <header className="my-8 text-center">
-      {/* Profile Button */}
-      <div className="flex mb-6">
-        <Link href="profile" className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })}>
-          <UserIcon className="w-6 h-6 text-[--color-background] mr-2" />
-          Perfil
-        </Link>
-      </div>
-
-        {/* <h1 className="text-4xl font-bold">Hola, </h1> */}
-        {/* <p className="mt-4 text-xl">Puntos disponibles: <span className="font-bold">1000</span></p> */}
-        <div className="flex flex-col items-center justify-between p-4 rounded-lg">
-        <h4 className='text-xl text-center'>Puntos disponibles</h4>
-        <div className="flex items-center">
-          <CoinsIcon className="w-6 h-6 text-[--color-primary]" />
-          <p className="ml-2 text-3xl font-bold">{userPoints}</p>
+        {/* boton de perfil*/}
+        <div className="flex mb-6">
+          <Link href="profile" className={buttonVariants({ variant: "default", size: "lg", className: "font-bold" })}>
+            <UserIcon className="w-6 h-6 text-[--color-background] mr-2" />
+            Perfil
+          </Link>
         </div>
-      </div>
 
-
-
+        <div className="flex flex-col items-center justify-between p-4 rounded-lg">
+          <h4 className='text-xl text-center'>Puntos disponibles</h4>
+          <div className="flex items-center">
+            <CoinsIcon className="w-6 h-6 text-[--color-primary]" />
+            <p className="ml-2 text-3xl font-bold">{userPoints}</p>
+          </div>
+        </div>
       </header>
 
-      {/* Navigation */}
+      {/* navegacion */}
       <nav className="flex justify-between">
         <Link href="/recycle" className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
           <RecycleIcon className="text-[--color-primary]" />
@@ -62,8 +57,7 @@ export default function Dashboard() {
         </Link>
       </nav>
 
-
-      {/* Manual Section */}
+      {/* seccion de manual */}
       <section className="flex my-12 text-center bg-[--color-secundary] rounded-lg p-3">
         <ManualIcon className="w-24 h-24 text-[--color-primary]"/>
         <div className='flex flex-col justify-center'>
@@ -72,23 +66,27 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* Coupons Section */}
+      {/* seccion de rewards */}
       <section className="my-12">
-        <h2 className="text-3xl font-semibold text-center">Tus cupones de descuento</h2>
-        <div className="grid gap-6 mt-8 md:grid-cols-2">
-          <div className="p-4 bg-gray-800 rounded-lg shadow-md">
-            <TicketIcon className="w-12 h-12 text-[--color-primary]"/>
-            <p className="text-xl">15% en alimentos</p>
-            <span className="block mt-2 text-sm text-right text-gray-400">18:40</span>
+        <h2 className="text-3xl font-semibold text-center mb-8">Tus cupones de descuento</h2>
+        {redeemedRewards.length === 0 ? (
+          <p className="text-center">Aún no has canjeado ningún beneficio.</p>
+        ) : (
+          <div className="grid gap-6 mt-8 md:grid-cols-2">
+            {redeemedRewards.slice(0, 2).map((reward, index) => (
+              <div key={index} className="p-4 bg-gray-800 rounded-lg shadow-md">
+                <TicketIcon className="w-12 h-12 text-[--color-primary]"/>
+                <p className="text-xl">{reward.discount} en {reward.category}</p>
+                <p className="mt-2 text-sm">Código: {reward.discountCode}</p>
+                <span className="block mt-2 text-sm text-right text-gray-400">
+                  Vence: {new Date(reward.expiration).toLocaleDateString()}
+                </span>
+              </div>
+            ))}
           </div>
-          <div className="p-4 bg-gray-800 rounded-lg shadow-md">
-            <TicketIcon className="w-12 h-12 text-[--color-primary]"/>
-            <p className="text-xl">15% en alimentos</p>
-            <span className="block mt-2 text-sm text-right text-gray-400">18:40</span>
-          </div>
-        </div>
+        )}
         <div className="mt-8 text-center">
-          <Link href="/ver-mas" className="text-lg text-blue-500 hover:underline">Ver más</Link>
+          <Link href="/rewards" className="text-lg text-blue-500 hover:underline">Ver más</Link>
         </div>
       </section>
 
