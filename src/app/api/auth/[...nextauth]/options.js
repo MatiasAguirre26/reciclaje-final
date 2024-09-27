@@ -1,4 +1,5 @@
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { cookies } from 'next/headers';
 
 export const authOptions = {
   providers: [
@@ -37,6 +38,13 @@ export const authOptions = {
         token.role = user.role;
         token.token = user.token;
       }
+      
+      cookies().set('userId', JSON.stringify(token.id), {
+        path: '/',
+      });
+      cookies().set('token', JSON.stringify(token.token), {
+        path: '/',
+      });
       return token;
     },
     async session({ session, token }) {

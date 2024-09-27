@@ -15,15 +15,16 @@ import { useEffect } from 'react';
 
 export default function Dashboard() {
   const { status } = useSession();
-  const { userPoints, redeemedRewards } = useRewardStore();
+  const { userPoints, redeemedRewards, getPoints } = useRewardStore();
 
   const { data: session } = useSession();
 
   useEffect(() => {
+    getPoints()
     if (session) {
       console.log('El usuario logueado tiene el rol:', session.user.role);
     }
-  }, [session]);
+  }, [session, getPoints]);
 
 
 
@@ -45,13 +46,7 @@ export default function Dashboard() {
 
         {/* <h1 className="text-4xl font-bold">Hola, </h1> */}
         {/* <p className="mt-4 text-xl">Puntos disponibles: <span className="font-bold">1000</span></p> */}
-        <div className="flex flex-col items-center justify-between p-4 rounded-lg">
-        <h4 className='text-xl font-semibold text-center'>Puntos disponibles</h4>
-        </div>
-        <div className="flex items-center">
-          <CoinsIcon className="w-6 h-6 text-[--color-primary]" />
-          <p className="ml-2 text-3xl font-bold">{userPoints}</p>
-        </div>
+        
 
         <div className="flex flex-col items-center justify-between p-4 rounded-lg">
           <h4 className='text-xl text-center'>Puntos disponibles</h4>

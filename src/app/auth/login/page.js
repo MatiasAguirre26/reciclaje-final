@@ -4,6 +4,10 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getSession } from 'next-auth/react';
+import { getCookie } from 'cookies-next';
+import useRewardStore from '@/app/stores/useRewardStore';
+
+
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -11,6 +15,7 @@ function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter(); 
   const { data: session } = useSession(); // Obtener la sesión actual
+  const { setUserId } = useRewardStore();
 
   // useEffect(() => {
   //   // Si el usuario ya ha iniciado sesión, redirigir según el rol
@@ -42,6 +47,8 @@ function LoginPage() {
       const session = await getSession(); 
       const userRole = session.user.role || 'user'; 
   
+      const userId = getCookie('userId');
+      setUserId(userId);
       if (userRole === 'admin') {
         router.push('/admin');
       } else {
