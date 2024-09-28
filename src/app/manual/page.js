@@ -1,6 +1,4 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link"; // Asegúrate de que la ruta sea la correcta según tu proyecto
+import { Button } from '@/components/ui/button'; // Si estás usando botones de shadcn UI
 
 // Iconos
 import MetalIcon from '/public/icons/metal.svg';
@@ -8,73 +6,74 @@ import GlassIcon from '/public/icons/glass.svg';
 import PaperIcon from '/public/icons/paper.svg';
 import BoxIcon from '/public/icons/box.svg';
 import PlasticIcon from '/public/icons/plastic.svg';
+import Navbar from '@/components/navbar';
 
 
-
-export default function Manual() {
+export default function ManualDeReciclaje() {
   return (
-    <div className="container mx-auto max-w-[600px] px-4 grid gap-[20px] justify-center my-8 text-white">
-      {/* Título principal */}
-      <h1 className="mb-8 text-4xl font-bold text-center">Manual Básico de Reciclaje</h1>
+    <div className="container p-6 mx-auto text-white mb-9">
+      <h1 className="mb-4 text-3xl font-bold text-center">Manual de Reciclaje</h1>
+      <div className="space-y-6">
+        {/* Sección 1: Introducción */}
+        <section className="p-4 bg-[--color-secundary] rounded-lg shadow-md">
+          <h2 className="flex items-center mb-2 text-xl font-semibold">
+            
+            ¿Por qué es importante reciclar?
+          </h2>
+          <p className="text-white">
+            Reciclar es crucial para reducir la contaminación y conservar los recursos naturales. A través del reciclaje, podemos disminuir la cantidad de basura que va a los vertederos y promover un ambiente más limpio y saludable.
+          </p>
+        </section>
 
-      {/* Sección: ¿Por qué reciclar? */}
-      <section className="mb-6">
-        <h2 className="mb-4 text-2xl font-semibold">¿Por qué reciclar?</h2>
-        <p className="text-gray-700">
-          El reciclaje es fundamental para reducir el impacto ambiental, reducir la cantidad de basura que generamos, y reutilizar materiales que, de otro modo, terminarían en vertederos. Reciclar correctamente también te ayudará a ganar puntos en nuestra aplicación.
-        </p>
-      </section>
+        {/* Sección 2: Cómo empezar a reciclar */}
+        <section className="p-4 bg-[--color-secundary] rounded-lg shadow-md">
+          <h2 className="flex items-center mb-2 text-xl font-semibold">
+            
+            Cómo empezar a reciclar
+          </h2>
+          <ul className="space-y-2 text-white list-disc list-inside">
+            <li>Los materiales reciclables comunes incluyen papel, cartón, vidrio, plástico y metal.</li>
+            <li>Lava y limpia los materiales reciclables antes de desecharlos.</li>
+            <li>Separa los materiales en categorías: reciclables y no reciclables.</li>
+            <li>Identifica los puntos de reciclaje cercanos en nuestro mapa interactivo.</li>
+          </ul>
+        </section>
 
-      {/* Sección: Materiales reciclables */}
-      <section className="mb-6">
-        <h2 className="mb-4 text-2xl font-bold">Materiales reciclables</h2>
-        <div className="flex justify-between">
-          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
-            <MetalIcon className="text-[--color-primary]" />
-            <span className="mt-2 text-white">Metales</span>
+        {/* Sección 3: Materiales reciclables y no reciclables */}
+        <section className="p-4 bg-[--color-secundary] rounded-lg shadow-md">
+          <h2 className="flex items-center mb-2 text-xl font-semibold">
+            ¿Qué materiales se pueden reciclar?
+          </h2>
+          <p className="text-white">
+            Aquí tienes una lista de materiales reciclables:
+          </p>
+          <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2">
+            {/* Materiales reciclables */}
+            <div>
+              <h3 className="mb-4 font-semibold text-[--color-primary]">Materiales reciclables:</h3>
+              <ul className="space-y-5 list-disc list-inside">
+                <li className="flex items-center">
+                  <PaperIcon className="w-6 h-6 mr-2" />
+                  Papel y cartón
+                </li>
+                <li className="flex items-center">
+                  <PlasticIcon className="w-6 h-6 mr-2" />
+                  Plásticos (botellas, envases)
+                </li>
+                <li className="flex items-center">
+                  <GlassIcon className="w-6 h-6 mr-2" />
+                  Vidrio (botellas, frascos)
+                </li>
+                <li className="flex items-center">
+                  <MetalIcon className="w-6 h-6 mr-2" />
+                  Metales (latas, aluminio)
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
-            <GlassIcon className="text-[--color-primary]" />
-            <span className="mt-2 text-white">Vidrio</span>
-          </div>
-          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
-            <PaperIcon className="text-[--color-primary]" />
-            <span className="mt-2 text-white">Papeles</span>
-          </div>
-          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
-            <PaperIcon className="text-[--color-primary]" />
-            <span className="mt-2 text-white">Papeles</span>
-          </div>
-          <div className="size-24 justify-between flex flex-col items-center p-4 transition-all bg-[--color-secundary] rounded-lg hover:bg-gray-700">
-            <PaperIcon className="text-[--color-primary]" />
-            <span className="mt-2 text-white">Papeles</span>
-          </div>
+        </section>
+        <Navbar />
       </div>
-      </section>
-
-      {/* Sección: Cómo clasificar los residuos */}
-      <section className="mb-6">
-        <h2 className="mb-4 text-2xl font-semibold">Cómo clasificar tus residuos</h2>
-        <p className="text-gray-700">
-          Sigue estos pasos sencillos para clasificar correctamente tus residuos en casa:
-        </p>
-        <ol className="mt-4 text-gray-700 list-decimal list-inside">
-          <li>Separa los residuos orgánicos de los inorgánicos.</li>
-          <li>Clasifica los materiales reciclables (plástico, papel, vidrio, metal) por separado.</li>
-          <li>Asegúrate de limpiar los envases antes de reciclarlos.</li>
-          <li>Deposita los residuos en los contenedores correctos.</li>
-        </ol>
-      </section>
-
-      {/* Sección: Errores comunes */}
-      <section className="mb-6">
-        <h2 className="mb-4 text-2xl font-semibold">Errores comunes</h2>
-        <ul className="text-gray-700 list-disc list-inside">
-          <li>No limpiar los envases antes de reciclar.</li>
-          <li>Mezclar vidrio de diferentes colores.</li>
-          <li>Reciclar papel o cartón sucio o grasoso.</li>
-        </ul>
-      </section>
     </div>
   );
 }
