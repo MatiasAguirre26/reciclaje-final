@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import CoinsIcon from '/public/icons/coins.svg';
 import TicketIcon from '/public/icons/ticket.svg';
 import useRewardStore from '@/app/stores/useRewardStore';
+import Navbar from '@/components/navbar';
 
 export default function RewardsPage() {
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function RewardsPage() {
   };
 
   return (
-    <div className="grid gap-6">
+    <div className="container mx-auto max-w-[600px] px-4 grid gap-[20px] justify-center">
       <div className="mb-8 text-3xl text-center">
         <h1 className='font-bold'>Recompensas</h1>
       </div>
@@ -64,7 +65,7 @@ export default function RewardsPage() {
         />
       </div>
       
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {filteredRewards.map((reward) => (
           <div
             key={reward.id}
@@ -79,6 +80,7 @@ export default function RewardsPage() {
           </div>
         ))}
       </div>
+      <Navbar />
     </div>
   );
 }
