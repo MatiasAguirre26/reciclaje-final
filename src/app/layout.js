@@ -2,7 +2,6 @@
 
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Footer from '@/components/footer';
 import styles from "@/styles/home.module.css";
 import SessionProvider  from '@/auth/session-provider';
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '700'] });
