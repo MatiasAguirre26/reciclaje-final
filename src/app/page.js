@@ -2,28 +2,27 @@
 
 import Image from "next/image";
 import styles from '@/styles/hero-section.module.css';
-import navbar from '@/styles/navbar-landing.module.css';
-import React, { useState } from 'react';
 import Footer from "@/components/footer";
+import Navbar from "@/components/navbar-landing";
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  // Funciones para abrir y cerrar el menú
-  const openNav = () => {
-    setIsOpen(true);
-    document.getElementById("mobile-menu").style.width = "100%";
-  };
+  // // Funciones para abrir y cerrar el menú
+  // const openNav = () => {
+  //   setIsOpen(true);
+  //   document.getElementById("mobile-menu").style.width = "100%";
+  // };
 
-  const closeNav = () => {
-    setIsOpen(false);
-    document.getElementById("mobile-menu").style.width = "0%";
-  };
+  // const closeNav = () => {
+  //   setIsOpen(false);
+  //   document.getElementById("mobile-menu").style.width = "0%";
+  // };
 
 
   return (
     <>
-      <header className={navbar.header}>
+      {/* <header className={navbar.header}>
         <div className={navbar.logo}>
           <Image src="/assets/logo.webp" alt="hero" width={200} height={100} />
         </div>
@@ -57,7 +56,8 @@ export default function Home() {
             <a href="/auth/register.html">Registrarse</a>
           </div>
         </div>
-      </header>
+      </header> */}
+      <Navbar/>
       <main className={styles.main}>
         <section className={styles.hero}>
           <article className={styles.article}>

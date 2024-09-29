@@ -31,7 +31,7 @@ export default function Footer() {
           <a href="" className={styles.menuIcon}>Contacto</a>
         </li>
       </ul>
-      <p className={styles.text}>@2024 | Todos los derechos reservados</p>
+      <p className={styles.text}>Puntos verdes | IntegrarTEC @2024</p>
   </footer>
     );
 }
