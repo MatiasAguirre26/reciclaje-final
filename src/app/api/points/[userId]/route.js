@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-export async function GET(req, {params}) {
+export async function GET(req, { params }) {
   const { userId } = params;
   const cookieStore = cookies();
   const token = cookieStore.get('token')?.value;
-  const tokenJson = JSON.parse(token);
+
   const response = await fetch(`${process.env.BACKEND_API_URL}/users/${userId}/points`, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${tokenJson}`,
+      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -37,28 +37,25 @@ export async function PUT(req, { params }) {
   const { userId } = params;
   const cookieStore = cookies();
   const token = cookieStore.get('token')?.value;
-
+  const points = await req.json()
   // guard clausee 
   if (!token) {
     return NextResponse.json({ success: false, error: 'Falta el token', data: null });
   }
-
-  let tokenJson;
+  
   try {
-    tokenJson = JSON.parse(token);
+    const response = await fetch(`${process.env.BACKEND_API_URL}/users/${userId}/points`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(points),
+    });
+    const data = await response.json();
+    return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ success: false, error: 'Token inválido', data: null });
+    console.log("Error al actualizar los puntos", error);
+    return null
   }
-
-  const response = await fetch(`${process.env.BACKEND_API_URL}/users/${userId}/points`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${tokenJson}`,
-    },
-    body: JSON.stringify(req.body),
-  });
-
-  const data = await response.json();
-  return NextResponse.json(data);
 }

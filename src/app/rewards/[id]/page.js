@@ -24,7 +24,8 @@ export default function RewardDetails({ params }) {
     redeemReward, 
     userPoints, 
     setSelectedReward, 
-    updateAfterRedemption 
+    updateAfterRedemption,
+    setPoints
   } = useRewardStore();
   
   const [redeemed, setRedeemed] = useState(false);
@@ -43,21 +44,22 @@ export default function RewardDetails({ params }) {
     if (userPoints >= selectedReward.cost) {
       try {
         const newPoints = userPoints - selectedReward.cost;
-        const response = await fetch(`/api/users/${userId}/points`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session.user.token}`,
-          },
-          body: JSON.stringify({ points: newPoints }),
-        });
+        // const response = await fetch(`/api/users/${userId}/points`, {
+        //   method: 'PUT',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //     'Authorization': `Bearer ${session.user.token}`,
+        //   },
+        //   body: JSON.stringify({ points: newPoints }),
+        // });
+        const updatedPoints = setPoints(newPoints);
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || 'Error en la respuesta del servidor');
-        }
+        // if (!response.ok) {
+        //   const errorData = await response.json();
+        //   throw new Error(errorData.message || 'Error en la respuesta del servidor');
+        // }
 
-        const updatedPoints = await response.json();
+        // const updatedPoints = await response.json();
         console.log('Canje exitoso, nuevos puntos:', updatedPoints);
         
         const redeemedCoupon = {
