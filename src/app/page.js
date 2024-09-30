@@ -6,64 +6,16 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar-landing";
 
 export default function Home() {
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // // Funciones para abrir y cerrar el menú
-  // const openNav = () => {
-  //   setIsOpen(true);
-  //   document.getElementById("mobile-menu").style.width = "100%";
-  // };
-
-  // const closeNav = () => {
-  //   setIsOpen(false);
-  //   document.getElementById("mobile-menu").style.width = "0%";
-  // };
-
 
   return (
     <>
-      {/* <header className={navbar.header}>
-        <div className={navbar.logo}>
-          <Image src="/assets/logo.webp" alt="hero" width={200} height={100} />
-        </div>
-        <nav>
-          <ul className={navbar.navLinks}>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="./pages/aboutUs.html">Sobre nosotros</a></li>
-            <li><a href="/auth/login">Iniciar Sesion</a></li>
-          </ul>
-        </nav>
-        <a className={navbar.btn} href="/auth/register">
-          <button>Registrarse</button>
-        </a>
-
-        <a onClick={openNav} className={navbar.menu} href="#">
-          <button>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20">
-              <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM64 256c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-            </svg>
-          </button>
-        </a>
-
-        <div id="mobile-menu" className={navbar.overlay}>
-          <a onClick={closeNav} href="" className={navbar.close}>
-            &times;
-          </a>
-          <div className={navbar.overlayContent}>
-            <a href="#">Inicio</a>
-            <a href="./pages/aboutUs.html">Sobre nosotros</a>
-            <a href="./auth/login">Iniciar Sesion</a>
-            <a href="/auth/register.html">Registrarse</a>
-          </div>
-        </div>
-      </header> */}
       <Navbar/>
       <main className={styles.main}>
         <section className={styles.hero}>
           <article className={styles.article}>
             <h1 className={styles.h1}>Reciclaje</h1>
               <p>Hace que reciclar sea fácil y gratificante. Regístrate, recicla y gana puntos que luego puedes canjear por increíbles recompensas. “Es así de simple”</p>
-              <a href="./auth/login"><button>Únete ahora</button></a>
+              <a href="./auth/login"><button className="hover:bg-[--color-hover]">Únete ahora</button></a>
           </article>
           <div>
             <Image src="/assets/header.webp" alt="hero" width={700} height={500} className="hidden md:block"/>      
@@ -141,7 +93,7 @@ export default function Home() {
                 <p className={styles.paragraph}>A través de estas alianzas, podemos ofrecer a nuestros usuarios descuentos especiales, eventos exclusivos y más. Únete a nosotros en nuestra misión de hacer del mundo un lugar más limpio y verde</p>                
             </article>
             <div>
-                <a href="#"><button>Únete a la misión</button></a>                
+                <a href="#"><button className="hover:bg-[--color-hover]">Únete a la misión</button></a>                
             </div>
         </section>
       </main>
