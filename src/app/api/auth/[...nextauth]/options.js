@@ -42,7 +42,7 @@ export const authOptions = {
       cookies().set('userId', JSON.stringify(token.id), {
         path: '/',
       });
-      cookies().set('token', JSON.stringify(token.token), {
+      cookies().set('token', token.token, {
         path: '/',
       });
       return token;

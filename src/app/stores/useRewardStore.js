@@ -9,7 +9,7 @@ const useRewardStore = create(
         if (!userId) {
           return
         }
-        const response = await fetch(`/api/points/${userId}`);
+        const response = await fetch(`/api/users/${userId}/points`);
         const data = await response.json();
         set({ userPoints: data });
       },
@@ -18,10 +18,10 @@ const useRewardStore = create(
         if (!userId) {
           return
         }
-        const response = await fetch(`/api/points/${userId}`, {
+        const response = await fetch(`/api/users/${userId}/points`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(points),
+          body: JSON.stringify({ points }),
         });
         const data = await response.json();
         set({ userPoints: data });

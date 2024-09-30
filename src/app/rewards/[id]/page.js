@@ -17,9 +17,16 @@ function generateRandomCode() {
 export default function RewardDetails({ params }) {
   const router = useRouter();
   const { data: session } = useSession();
-  const userId = session?.user?.userId;
+  const userId = session?.user?.id;
 
-  const { selectedReward, redeemReward, userPoints, setSelectedReward, addRedeemedReward } = useRewardStore();
+  const { 
+    selectedReward, 
+    redeemReward, 
+    userPoints, 
+    setSelectedReward, 
+    updateAfterRedemption 
+  } = useRewardStore();
+  
   const [redeemed, setRedeemed] = useState(false);
 
   useEffect(() => {
@@ -35,38 +42,46 @@ export default function RewardDetails({ params }) {
   const handleRedeem = async () => {
     if (userPoints >= selectedReward.cost) {
       try {
-        const response = await fetch('/api/coupons/redeem', {
-          method: 'POST',
+        const newPoints = userPoints - selectedReward.cost;
+        const response = await fetch(`/api/users/${userId}/points`, {
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session.accessToken}`,
+            'Authorization': `Bearer ${session.user.token}`,
           },
-          body: JSON.stringify({
-            couponId: selectedReward.id,
-            cost: selectedReward.cost,
-          }),
+          body: JSON.stringify({ points: newPoints }),
         });
-  
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Canje exitoso:', data);
-          updateAfterRedemption(data.updatedPoints, data.redeemedCoupon);
-          router.push('/dashboard');
-        } else {
+
+        if (!response.ok) {
           const errorData = await response.json();
-          console.error('Error en el canje:', errorData);
-          alert(errorData.message || 'Error al canjear el cupón. Por favor, intenta de nuevo.');
+          throw new Error(errorData.message || 'Error en la respuesta del servidor');
         }
+
+        const updatedPoints = await response.json();
+        console.log('Canje exitoso, nuevos puntos:', updatedPoints);
+        
+        const redeemedCoupon = {
+          id: Date.now(),
+          discount: selectedReward.discount,
+          category: selectedReward.category,
+          redeemedAt: new Date().toISOString(),
+          expiration: selectedReward.expiration,
+          discountCode: generateRandomCode(),
+        };
+        
+        updateAfterRedemption(updatedPoints, redeemedCoupon);
+        setRedeemed(true);
+        setTimeout(() => {
+          router.push('/dashboard');
+        }, 2000);
       } catch (error) {
         console.error('Error al realizar el canje:', error);
-        alert('Error de conexión. Por favor, verifica tu conexión a internet e intenta de nuevo.');
+        alert(error.message || 'Error al procesar la solicitud. Por favor, intenta de nuevo más tarde.');
       }
     } else {
       alert('No tienes suficientes puntos para canjear esta recompensa.');
     }
   };
-  
-  
 
   return (
     <div className="grid gap-6">
