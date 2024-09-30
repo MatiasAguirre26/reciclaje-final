@@ -83,7 +83,7 @@ export default function Home() {
                 <p className={styles.paragraph}>Encuentra puntos de reciclaje cercanos a ti y haz tu parte para proteger el medio ambiente. Nuestra aplicación te muestra los puntos de reciclaje disponibles en tu área, junto con detalles sobre qué materiales se aceptan y los horarios de funcionamiento</p>        
             </article>
             <div>
-                <img src="./assets/points.webp" alt="recycling-points"/>   
+                <Image src="/assets/points.webp" alt="recycling-points" width={400} height={400}/>   
             </div>
         </section>
         {/*Colaboraciones y alianzas*/}

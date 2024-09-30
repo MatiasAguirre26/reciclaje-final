@@ -1,6 +1,7 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react"; // Importar useState para manejar el estado local
+import Image from "next/image";
 import styles from '@/styles/recycle-page.module.css';
 import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
@@ -50,10 +51,12 @@ export default function Locations() {
             {/* Mostrar la imagen de la ubicación seleccionada */}
             <div className="mb-5">
             {currentLocation && (
-                <img
+                <Image
                     src={currentLocation.imageUrl}
                     alt={`Imagen de ${currentLocation.name}`}
                     className="object-cover w-full rounded-lg h-60 max-h-64"
+                    width={400}
+                    height={400}
                 />
             )}
             </div>
