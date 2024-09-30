@@ -7,6 +7,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import useRecycleStore from "@/app/stores/useRecycleStore"; // Importar la store
 import ChatComponent from './chatbot/chatbot';
+import Chaticon from '/public/icons/chat.svg';
 
 
 
@@ -66,9 +67,9 @@ export default function Recycle() {
       </div>
       <div>
          {/* Icono flotante */}
-      <button className={styles.floatingIcon} onClick={toggleChat}>
-      </button> 
-
+         <button className={styles.floatingIcon} onClick={toggleChat}>
+  <Chaticon className={styles.chatIcon} /> {/* Añadir el nuevo ícono */}
+</button>
        {/* Mostrar el componente de chatbot */}
        {isChatOpen && <ChatComponent onClose={toggleChat} />}
 

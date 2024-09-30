@@ -1,64 +1,93 @@
 .recycleContainer {
+    position: fixed; 
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
     background-color: #111;
     color: #fff;
     padding: 20px;
     border-radius: 10px;
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
-  }
-  
-  .chatContainer {
-    max-height: 300px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-  }
-  
-  .messages {
+    width: 90%;
+    max-width: 800px;
+    height: 70%; 
+    max-height: 80%;
+    z-index: 1000; 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .userMessage {
-    align-self: flex-end;
-    background-color: #4caf50;
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 5px 0;
-  }
-  
-  .botMessage {
-    background-color: #222;
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 5px 0;
-  }
-  
-  .chatInput {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+    .recycleContainer {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .recycleContainer {
+        width: 43%;
+    }
+}
+
+.chatContainer {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    max-height: 70%;
+}
+
+.chatInput {
     width: 100%;
     padding: 10px;
     border: none;
     border-radius: 10px;
     background-color: #333;
     color: white;
-  }
-  
-  .sendButton {
-    background-color: #4caf50;
-    color: white;
+    margin-bottom: 10px;
+    resize: none;
+    height: 70px;
+}
+
+.buttonContainer {
+    display: flex;  
+    justify-content: flex-end;  
+    gap: 10px;                
+    margin-top: 10px;          
+}
+
+.sendButton, .closeButton {
+    padding: 10px;
     border: none;
     border-radius: 10px;
-    padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .sendButton:hover {
-    background-color: #45a049;
-  }
+    width: 100px;
+}
 
-  
+.sendButton {
+    background-color: #4caf50;
+    color: white;
+}
+
+.closeButton {
+    background-color: #ca5849;
+    color: white;
+}
+
+.sendButton:hover {
+    background-color: #45a049;
+}
+
+.closeButton:hover {
+    background-color: #b3473e;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 999; 
+}
