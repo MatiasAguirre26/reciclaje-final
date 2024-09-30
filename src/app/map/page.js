@@ -81,6 +81,7 @@ export default function MapComponent() {
 
   return (
     <div className="container mx-auto max-w-[600px] px-4 my-8 text-white">
+        <h1 className='mb-4 text-3xl font-bold text-center'>Zonas de reciclaje</h1>
         <div id="map" className='w-full h-[800px] rounded-lg mb-4'></div>
         <Navbar />
     </div>

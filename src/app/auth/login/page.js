@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getSession } from 'next-auth/react';
-// import { getCookie } from 'cookies-next';
+import { getCookie } from 'cookies-next';
 import useRewardStore from '@/app/stores/useRewardStore';
 import Navbar from '@/components/navbar-landing';
 import Footer from '@/components/footer';
