@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { ChatbotRoute } from '@/app/api/chat/route';
 import styles from '@/styles/chatbot.module.css'; 
+import { useState } from 'react';
 
 const ChatComponent = ({ onClose }) => {
   const [question, setQuestion] = useState('');
@@ -10,23 +11,23 @@ const ChatComponent = ({ onClose }) => {
 
   const handleAsk = async () => {
     if (!question) return;
-
+  
     setLoading(true);
     setResponses(prev => [...prev, { text: question, type: 'user' }]);
-    
+  
     try {
-      const res = await fetch('http://localhost:3002/api/chatbot/ask', {
+      const res = await fetch('http://localhost:3002/api/chatbot/ask', { // Cambia esto a la ruta correcta
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question }), // Envía la pregunta como JSON
       });
-
+  
       if (!res.ok) {
         throw new Error('Error en la respuesta del servidor.');
       }
-
+  
       const data = await res.json();
       setResponses(prev => [...prev, { text: data.answer, type: 'bot' }]);
     } catch (error) {
@@ -36,6 +37,7 @@ const ChatComponent = ({ onClose }) => {
       setQuestion('');
     }
   };
+  
   return (
     <>
       <div className={styles.overlay} onClick={onClose}></div> {/* Fondo semitransparente */}
