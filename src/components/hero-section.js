@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function HeroSection() {
     return (
       <main>
@@ -8,7 +10,7 @@ export default function HeroSection() {
               <a href="./pages/login.html"><button>Únete ahora</button></a>
           </article>
           <div>
-              <img src="./assets/header.webp" alt="hero"></img>         
+              <Image src="./assets/header.webp" alt="hero" width={400} height={400}/>     
           </div>
         </section>
       </main>

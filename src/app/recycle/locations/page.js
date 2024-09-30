@@ -1,6 +1,7 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react"; // Importar useState para manejar el estado local
+import Image from "next/image";
 import styles from '@/styles/recycle-page.module.css';
 import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
@@ -21,6 +22,7 @@ export default function Locations() {
     const { setSelectedLocation } = useRecycleStore(); // Acceder al setter para guardar la ubicación
 
     // Definir ubicaciones con dirección, horarios, e imagenes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const locations = [
       { value: "location1", name: "Punto verde de 9 de Julio", address: "9 de Julio, Buenos Aires", hours: "Lunes a Viernes: 9:00 AM - 6:00 PM", imageUrl: "/assets/location1.jpg" },
       { value: "location2", name: "Punto verde de Parque Rivadavia", address: "Parque Rivadavia, Buenos Aires", hours: "Todos los días: 8:00 AM - 8:00 PM", imageUrl: "/assets/location2.jpg" },
@@ -29,11 +31,23 @@ export default function Locations() {
     ];
 
     // Usar useEffect para seleccionar una ubicación por defecto cuando se monta el componente
+    // useEffect(() => {
+    //   const defaultLocation = locations[0]; // Selecciona la primera ubicación por defecto (o cualquier otra)
+    //   setCurrentLocation(defaultLocation);
+    //   setSelectedLocation(defaultLocation);
+    // }, []); // Se ejecuta solo una vez al montar el componente
+
     useEffect(() => {
-      const defaultLocation = locations[0]; // Selecciona la primera ubicación por defecto (o cualquier otra)
-      setCurrentLocation(defaultLocation);
-      setSelectedLocation(defaultLocation);
-    }, []); // Se ejecuta solo una vez al montar el componente
+        if (locations && locations.length > 0) {
+          const defaultLocation = locations[0];
+      
+          // Solo actualiza el estado si la ubicación por defecto es diferente a la actual
+          if (!currentLocation || currentLocation.id !== defaultLocation.id) {
+            setCurrentLocation(defaultLocation);
+            setSelectedLocation(defaultLocation);
+          }
+        }
+      }, [locations, currentLocation, setSelectedLocation]);
 
     // Manejar la selección de ubicación
     const handleLocationChange = (value) => {
@@ -50,10 +64,12 @@ export default function Locations() {
             {/* Mostrar la imagen de la ubicación seleccionada */}
             <div className="mb-5">
             {currentLocation && (
-                <img
+                <Image
                     src={currentLocation.imageUrl}
                     alt={`Imagen de ${currentLocation.name}`}
                     className="object-cover w-full rounded-lg h-60 max-h-64"
+                    width={400}
+                    height={400}
                 />
             )}
             </div>
