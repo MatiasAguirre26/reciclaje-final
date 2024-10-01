@@ -8,6 +8,7 @@
   --background-color: #040F0F;
   --color-white: #F0E7E7;
   --color-hover: #0AA121;
+  --color-tertiary: #1E1E1E;
 }
 
 @media (prefers-color-scheme: dark) {

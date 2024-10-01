@@ -20,12 +20,12 @@ function ConfirmationPageContent() {
   const handleConfirm = async () => {
     console.log('Materiales seleccionados:', selectedMaterials);
     console.log('Ubicación seleccionada:', selectedLocation);
-    console.log('ID de usuario:', session.user.userId);
+    console.log('ID de usuario:', session?.user?.userId);
     if (selectedMaterials.length > 0 && selectedLocation) {
       const data = {
         materials: selectedMaterials,
         location: selectedLocation,
-        userID: session.user.userId,
+        userID: session?.user?.userId,
       };
 
       console.log("Datos a enviar:", data);
@@ -69,7 +69,7 @@ function ConfirmationPageContent() {
   return (
     <div className="grid gap-6">
       <div className="mb-8 text-3xl text-center">
-        <h1>Confirmar Reciclaje</h1>
+        <h1 className="font-bold">Confirmar Reciclaje</h1>
       </div>
       {/* Mostrar mensaje condicionalmente */}
       {message && (

@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
+import Navbar from "@/components/navbar-landing";
+import Footer from '@/components/footer';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -53,6 +54,8 @@ export default function RegisterPage() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="flex items-center justify-center min-h-screen px-4 bg-[--background-color]">
       <form onSubmit={handleSubmit} className="w-full max-w-md p-8 bg-[--color-secundary] rounded-lg shadow-md">
         <h2 className="mb-6 text-2xl font-semibold text-center text-white">Registrarse</h2>
@@ -107,7 +110,7 @@ export default function RegisterPage() {
             required
             className="w-full p-2 text-black bg-[--color-white] rounded focus:outline-none focus:ring focus:ring-blue-500"/>
         </div>
-        <button type="submit" className="w-full bg-[--color-primary] py-3 font-bold text-black transition duration-200 rounded-full hover:bg-[--color-secundary]">Registrarse</button>
+        <button type="submit" className="w-full bg-[--color-primary] py-3 font-bold text-black transition duration-200 rounded-full hover:bg-[--color-hover]">Registrarse</button>
         {/* Enlace a la página de login */}
         <div className="mt-6 text-center">
           <p className="text-white">¿Ya tiene un cuenta?</p>
@@ -115,5 +118,7 @@ export default function RegisterPage() {
         </div>
       </form>
     </div>
+    <Footer/>
+    </>
   );
 }
