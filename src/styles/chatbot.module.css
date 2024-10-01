@@ -1,4 +1,3 @@
-/* Estilos del contenedor del chat */
 .recycleContainer {
     position: fixed; 
     top: 50%;
@@ -30,7 +29,6 @@
     }
 }
 
-/* Contenedor del chat */
 .chatContainer {
     flex-grow: 1;
     overflow-y: auto;
@@ -38,7 +36,6 @@
     max-height: 70%;
 }
 
-/* Input del chat */
 .chatInput {
     width: 100%;
     padding: 10px;
@@ -51,7 +48,6 @@
     height: 70px;
 }
 
-/* Contenedor de botones (enviar y cerrar) */
 .buttonContainer {
     display: flex;  
     justify-content: flex-end;  
@@ -59,7 +55,6 @@
     margin-top: 10px;          
 }
 
-/* Botón de enviar y cerrar */
 .sendButton, .closeButton {
     padding: 10px;
     border: none;
@@ -87,7 +82,6 @@
     background-color: #b3473e;
 }
 
-/* Overlay del chat */
 .overlay {
     position: fixed;
     top: 0;
@@ -98,20 +92,18 @@
     z-index: 999; 
 }
 
-/* Estilos del menú de preguntas predefinidas */
 .predefinedQuestions {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
     margin-bottom: 10px;
-    background-color: #444; /* Similar al chat */
+    background-color: #444;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos de los botones de preguntas predefinidas */
 .questionButton {
     background-color: #666;
     color: white;
@@ -121,19 +113,17 @@
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    flex: 1 1 calc(50% - 10px); /* Dos botones por fila en pantallas medianas */
+    flex: 1 1 calc(50% - 10px);
     text-align: center;
 }
 
-/* Hover para los botones de preguntas */
 .questionButton:hover {
     background-color: #555;
 }
 
-/* Hacer que el menú sea responsive */
 @media (max-width: 768px) {
     .questionButton {
-        flex: 1 1 100%; /* Un botón por fila en pantallas pequeñas */
+        flex: 1 1 100%;
         font-size: 14px;
         padding: 10px;
     }

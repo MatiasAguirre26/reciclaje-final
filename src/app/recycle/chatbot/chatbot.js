@@ -44,7 +44,7 @@ const ChatComponent = ({ onClose }) => {
     } finally {
       setLoading(false);
       setQuestion('');
-      setShowPredefinedQuestions(false); // Ocultar el menú después de enviar la pregunta
+      setShowPredefinedQuestions(false); 
     }
   };
 
@@ -55,7 +55,7 @@ const ChatComponent = ({ onClose }) => {
 
   return (
     <>
-      <div className={styles.overlay} onClick={onClose}></div> {/* Fondo semitransparente */}
+      <div className={styles.overlay} onClick={onClose}></div> 
       <div className={styles.recycleContainer}>
         <h2 className="text-2xl mb-4">Greene Helper</h2>
         
@@ -70,7 +70,7 @@ const ChatComponent = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Mostrar preguntas predefinidas solo si no se ha escrito una pregunta */}
+  
         {showPredefinedQuestions && (
           <div className={styles.predefinedQuestions}>
             {predefinedQuestions.map((predefinedQuestion, index) => (
@@ -91,7 +91,7 @@ const ChatComponent = ({ onClose }) => {
           onChange={(e) => {
             setQuestion(e.target.value);
             if (e.target.value !== '') {
-              setShowPredefinedQuestions(false); // Ocultar preguntas predefinidas al escribir
+              setShowPredefinedQuestions(false); 
             }
           }}
           placeholder="Escribe tu pregunta..."
