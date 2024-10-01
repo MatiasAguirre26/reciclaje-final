@@ -55,22 +55,25 @@ const ChatComponent = ({ onClose }) => {
 
   return (
     <>
-      <div className={styles.overlay} onClick={onClose}></div> 
+      <div className={styles.overlay} onClick={onClose}></div> {/* Fondo semitransparente */}
       <div className={styles.recycleContainer}>
         <h2 className="text-2xl mb-4">Greene Helper</h2>
         
         <div className={styles.chatContainer}>
           <div className={styles.messages}>
             {responses.map((response, index) => (
-              <div key={index} className={response.type === 'user' ? styles.userMessage : styles.botMessage}>
+              <div 
+                key={index} 
+                className={`${styles.message} ${response.type === 'user' ? styles.userMessage : styles.botMessage}`}
+              >
                 {response.text}
               </div>
             ))}
-            {loading && <div className={styles.botMessage}>Cargando...</div>}
+            {loading && <div className={`${styles.message} ${styles.botMessage}`}>Cargando...</div>}
           </div>
         </div>
 
-  
+        {/* Mostrar preguntas predefinidas solo si no se ha escrito una pregunta */}
         {showPredefinedQuestions && (
           <div className={styles.predefinedQuestions}>
             {predefinedQuestions.map((predefinedQuestion, index) => (
@@ -91,7 +94,7 @@ const ChatComponent = ({ onClose }) => {
           onChange={(e) => {
             setQuestion(e.target.value);
             if (e.target.value !== '') {
-              setShowPredefinedQuestions(false); 
+              setShowPredefinedQuestions(false); // Ocultar preguntas predefinidas al escribir
             }
           }}
           placeholder="Escribe tu pregunta..."
@@ -105,5 +108,4 @@ const ChatComponent = ({ onClose }) => {
     </>
   );
 };
-
 export default ChatComponent;
